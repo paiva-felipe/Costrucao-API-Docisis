@@ -1,9 +1,9 @@
 const pool = require('../config/database')
 
 class CargosRepository {
-    async listarCargos() {
-        const listarCargos = await pool.query('SELECT * FROM tbl_cargos')
-        return istarCargos
+    async listarCargo() {
+        const listarCargo = await pool.query('SELECT * FROM tbl_cargos')
+        return istarCargo
     }
 
     async buscarCargoId(id) {
