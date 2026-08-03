@@ -16,7 +16,7 @@ class EstoqueRepository {
         return cadastrarEstoque.insertId
     }
 
-    async atualizarPedido(id, dadosDoEstoque) {
+    async atualizarEstoque(id, dadosDoEstoque) {
         const camposEstoque = []
         const dadoEstoque = []
 

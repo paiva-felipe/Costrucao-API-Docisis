@@ -16,7 +16,7 @@ class EntradaRepository {
         return cadastrarEntrada.insertId
     }
 
-    async atualizarPedido(id, dadosDaEntrada) {
+    async atualizarEntrada(id, dadosDaEntrada) {
         const camposEntrada = []
         const dadoEntrada = []
 
