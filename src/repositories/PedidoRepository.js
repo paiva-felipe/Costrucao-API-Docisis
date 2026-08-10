@@ -2,18 +2,18 @@ const pool = require('../config/database')
 
 class PedidoRepository {
     async listarPedido() {
-        const listarPedido = await pool.query('SELECT * FROM tbl_pedido')
-        return listarPedido
+        const [rows] = await pool.query('SELECT * FROM tbl_pedido')
+        return rows
     }
 
     async buscarPedidoId(id) {
-        const buscarPedidoId = await pool.query('SELECT * FROM tbl_pedido WHERE id = ?', [id])
-        return buscarPedidoId
+        const [rows] = await pool.query('SELECT * FROM tbl_pedido WHERE id = ?', [id])
+        return rows[0]
     }
 
     async cadastrarPedido(dadosDoPedido) {
-        const cadastrarPedido = await pool.query('INSERT INTO tbl_pedido SET ?', [dadosDoPedido])
-        return cadastrarPedido.insertId
+        const [resultado] = await pool.query('INSERT INTO tbl_pedido SET ?', [dadosDoPedido])
+        return resultado.insertId
     }
 
     async atualizarPedido(id, dadosDoPedido) {
@@ -31,7 +31,7 @@ class PedidoRepository {
 
         const query = `UPDATE tbl_pedido SET ${camposPedido.join(',')} WHERE id = ?`
 
-        const resultado = await pool.query(query, dadoPedido)
+        const [resultado] = await pool.query(query, dadoPedido)
 
         return resultado.affectedRows
     }

@@ -5,7 +5,7 @@ class FornecedorService {
         const fornecedores = await FornecedorRepository.listarFornecedor()
 
         return {
-            sucesso: false,
+            sucesso: true,
             dados: fornecedores,
             total: fornecedores.length
         }
@@ -13,110 +13,73 @@ class FornecedorService {
 
     async buscarFornecedorId(id) {
         if(!id || isNaN(id)) {
-            throw {
-                status: 400,
-                mensagem: "Id inválido"
-            }
+            throw { status: 400, mensagem: "Id inválido" }
         }
 
         const fornecedor = await FornecedorRepository.buscarFornecedorId(id)
 
         if(!fornecedor) {
-            throw {
-                status: 404,
-                mensagem: "Fornecedor não encontrado"
-            }
+            throw { status: 404, mensagem: "Fornecedor não encontrado" }
         }
 
-        return {
-            sucesso: true,
-            dados: fornecedor[0]
-        }
+        return { sucesso: true, dados: fornecedor }
     }
 
     async cadastrarFornecedor(dados) {
         const {nome_fornecedor} = dados
-        
+
         if(!nome_fornecedor) {
-            throw {
-                status: 400,
-                mensagem: "Nome fornecedor é obrigatório"
-            }
+            throw { status: 400, mensagem: "Nome fornecedor é obrigatório" }
         }
 
-        novoFornecedor = {
+        const novoFornecedor = {
             nome_fornecedor: nome_fornecedor.trim()
         }
 
         const resultado = await FornecedorRepository.cadastrarFornecedor(novoFornecedor)
 
-        return {
-            sucesso: true,
-            mensagem: "Sucesso ao cadastrar",
-            resultado
-        }
+        return { sucesso: true, mensagem: "Sucesso ao cadastrar", resultado }
     }
 
     async atualizarFornecedor(id, dados) {
         if(!id || isNaN(id)) {
-            throw {
-                status: 400,
-                mensagem: "Id inválido"
-            }
+            throw { status: 400, mensagem: "Id inválido" }
         }
 
         const fornecedor = await FornecedorRepository.buscarFornecedorId(id)
 
         if(!fornecedor) {
-            throw {
-                status: 404,
-                mensagem: "Fornecedor não encontrado"
-            }
+            throw { status: 404, mensagem: "Fornecedor não encontrado" }
         }
 
         const fornecedorAtualizado = {}
         const {nome_fornecedor} = dados
 
-        if(nome_fornecedor != undefined || nome_fornecedor.trim() != "") fornecedorAtualizado.nome_fornecedor = nome_fornecedor.trim()
+        if(nome_fornecedor !== undefined && nome_fornecedor.trim() != "") fornecedorAtualizado.nome_fornecedor = nome_fornecedor.trim()
 
         if(Object.keys(fornecedorAtualizado).length == 0) {
-            throw {
-                status: 400,
-                mensagem: "Nenhum dado válido enviado para a atualização"
-            }
+            throw { status: 400, mensagem: "Nenhum dado válido enviado para a atualização" }
         }
 
         await FornecedorRepository.atualizarFornecedor(id, fornecedorAtualizado)
 
-        return {
-            sucesso: true,
-            mensagem: "Fornecedor atualizado"
-        }
+        return { sucesso: true, mensagem: "Fornecedor atualizado" }
     }
 
     async deletarFornecedor(id) {
         if(!id || isNaN(id)) {
-            throw {
-                status: 400,
-                mensagem: "Id inválido"
-            }
+            throw { status: 400, mensagem: "Id inválido" }
         }
 
         const fornecedor = await FornecedorRepository.buscarFornecedorId(id)
 
         if(!fornecedor) {
-            throw {
-                status: 404,
-                mensagem: "Fornecedor não encontrado"
-            }
+            throw { status: 404, mensagem: "Fornecedor não encontrado" }
         }
 
         await FornecedorRepository.deletarFornecedor(id)
 
-        return {
-            sucesso: true,
-            mensagem: "Fornecedor apagado"
-        }
+        return { sucesso: true, mensagem: "Fornecedor apagado" }
     }
 }
 

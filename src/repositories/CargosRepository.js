@@ -2,18 +2,18 @@ const pool = require('../config/database')
 
 class CargosRepository {
     async listarCargo() {
-        const listarCargo = await pool.query('SELECT * FROM tbl_cargos')
-        return istarCargo
+        const [rows] = await pool.query('SELECT * FROM tbl_cargos')
+        return rows
     }
 
     async buscarCargoId(id) {
-        const buscarCargoId = await pool.query('SELECT * FROM tbl_cargos WHERE id = ?', [id])
-        return buscarCargoId
+        const [rows] = await pool.query('SELECT * FROM tbl_cargos WHERE id = ?', [id])
+        return rows[0]
     }
 
     async cadastrarCargo(dadosDoCargo) {
-        const cadastrarCargo = await pool.query('INSERT INTO tbl_cargos SET ?', [dadosDoCargo])
-        return cadastrarCargo.insertId
+        const [resultado] = await pool.query('INSERT INTO tbl_cargos SET ?', [dadosDoCargo])
+        return resultado.insertId
     }
 
     async atualizarCargo(id, dadosDoCargo) {
@@ -31,7 +31,7 @@ class CargosRepository {
 
         const query = `UPDATE tbl_cargos SET ${camposCargo.join(',')} WHERE id = ?`
 
-        const resultado = await pool.query(query, dadoCargo)
+        const [resultado] = await pool.query(query, dadoCargo)
 
         return resultado.affectedRows
     }

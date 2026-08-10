@@ -2,18 +2,18 @@ const pool = require('../config/database')
 
 class SaidaRepository {
     async listarSaida() {
-        const listarSaida = await pool.query('SELECT * FROM tbl_mov_saida')
-        return listarSaida
+        const [rows] = await pool.query('SELECT * FROM tbl_mov_saida')
+        return rows
     }
 
     async buscarSaidaId(id) {
-        const buscarSaidaId = await pool.query('SELECT * FROM tbl_mov_saida WHERE id = ?', [id])
-        return buscarSaidaId
+        const [rows] = await pool.query('SELECT * FROM tbl_mov_saida WHERE id = ?', [id])
+        return rows[0]
     }
 
     async cadastrarSaida(dadosDaSaida) {
-        const cadastrarSaida = await pool.query('INSERT INTO tbl_mov_saida SET ?', [dadosDaSaida])
-        return cadastrarSaida.insertId
+        const [resultado] = await pool.query('INSERT INTO tbl_mov_saida SET ?', [dadosDaSaida])
+        return resultado.insertId
     }
 
     async atualizarSaida(id, dadosDaSaida) {
@@ -31,7 +31,7 @@ class SaidaRepository {
 
         const query = `UPDATE tbl_mov_saida SET ${camposSaida.join(',')} WHERE id = ?`
 
-        const resultado = await pool.query(query, dadoSaida)
+        const [resultado] = await pool.query(query, dadoSaida)
 
         return resultado.affectedRows
     }

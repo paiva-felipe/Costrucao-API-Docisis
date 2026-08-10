@@ -2,18 +2,18 @@ const pool = require('../config/database')
 
 class EntradaRepository {
     async listarEntrada() {
-        const listarEntrada = await pool.query('SELECT * FROM tbl_mov_entrada')
-        return listarEntrada
+        const [rows] = await pool.query('SELECT * FROM tbl_mov_entrada')
+        return rows
     }
 
     async buscarEntradaId(id) {
-        const buscarEntradaId = await pool.query('SELECT * FROM tbl_mov_entrada  WHERE id = ?', [id])
-        return buscarEntradaId
+        const [rows] = await pool.query('SELECT * FROM tbl_mov_entrada WHERE id = ?', [id])
+        return rows[0]
     }
 
     async cadastrarEntrada(dadosDaEntrada) {
-        const cadastrarEntrada = await pool.query('INSERT INTO tbl_mov_entrada SET ?', [dadosDaEntrada])
-        return cadastrarEntrada.insertId
+        const [resultado] = await pool.query('INSERT INTO tbl_mov_entrada SET ?', [dadosDaEntrada])
+        return resultado.insertId
     }
 
     async atualizarEntrada(id, dadosDaEntrada) {
@@ -31,7 +31,7 @@ class EntradaRepository {
 
         const query = `UPDATE tbl_mov_entrada SET ${camposEntrada.join(',')} WHERE id = ?`
 
-        const resultado = await pool.query(query, dadoEntrada)
+        const [resultado] = await pool.query(query, dadoEntrada)
 
         return resultado.affectedRows
     }

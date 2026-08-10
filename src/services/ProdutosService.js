@@ -5,7 +5,7 @@ class ProdutoService {
         const produtos = await ProdutoRepository.listarProduto()
 
         return {
-            sucesso: false,
+            sucesso: true,
             dados: produtos,
             total: produtos.length
         }
@@ -30,7 +30,7 @@ class ProdutoService {
 
         return {
             sucesso: true,
-            dados: produto[0]
+            dados: produto
         }
     }
 
@@ -40,20 +40,20 @@ class ProdutoService {
         if(!marca || !lote || !tipo) {
             throw {
                 status: 400,
-                mensagem: "Nome e produto são obrigatórios"
+                mensagem: "Marca, lote e tipo são obrigatórios"
             }
         }
 
-        if(typeof validade != "date") {
+        if(validade != undefined && isNaN(Date.parse(validade))) {
             throw {
                 status: 400,
-                mensagem: "A validade deve ser um número positivo"
+                mensagem: "A validade deve ser uma data válida"
             }
         }
 
-        novoProduto = {
+        const novoProduto = {
             marca: marca.trim(),
-            nome_fornecedor: nome_fornecedor.trim(),
+            nome_fornecedor: (nome_fornecedor || '').trim(),
             lote: lote.trim(),
             tipo: tipo.trim(),
             validade
@@ -88,19 +88,19 @@ class ProdutoService {
         const produtoAtualizado = {}
         const {marca, nome_fornecedor, lote, tipo, validade} = dados
 
-        if(marca != undefined || marca.trim() != "") produtoAtualizado.marca = marca.trim()
+        if(marca !== undefined && marca.trim() != "") produtoAtualizado.marca = marca.trim()
 
-        if(nome_fornecedor != undefined || nome_fornecedor.trim() != "") produtoAtualizado.nome_fornecedor = nome_fornecedor.trim()
-        
-        if(lote != undefined || lote.trim() != "") produtoAtualizado.lote = lote.trim()
+        if(nome_fornecedor !== undefined && nome_fornecedor.trim() != "") produtoAtualizado.nome_fornecedor = nome_fornecedor.trim()
 
-        if(tipo != undefined || tipo.trim() != "") produtoAtualizado.tipo = tipo.trim()
+        if(lote !== undefined && lote.trim() != "") produtoAtualizado.lote = lote.trim()
+
+        if(tipo !== undefined && tipo.trim() != "") produtoAtualizado.tipo = tipo.trim()
 
         if(validade != undefined) {
-            if(typeof validade != "date") {
+            if(isNaN(Date.parse(validade))) {
                 throw {
                     status: 400,
-                    mensagem: "A validade deve ser um número positivo"
+                    mensagem: "A validade deve ser uma data válida"
                 }
             }
 

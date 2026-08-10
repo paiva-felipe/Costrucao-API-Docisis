@@ -5,7 +5,7 @@ class SaidaService {
         const saidas = await SaidaRepository.listarSaida()
 
         return {
-            sucesso: false,
+            sucesso: true,
             dados: saidas,
             total: saidas.length
         }
@@ -19,7 +19,7 @@ class SaidaService {
             }
         }
 
-        const saida = await SaidaRepository.buscarPedidosId(id)
+        const saida = await SaidaRepository.buscarSaidaId(id)
 
         if(!saida) {
             throw {
@@ -30,7 +30,7 @@ class SaidaService {
 
         return {
             sucesso: true,
-            dados: saida[0]
+            dados: saida
         }
     }
 
@@ -40,7 +40,7 @@ class SaidaService {
         if(!id_pedido || !cpf || !horario || !quantidade || !preco) {
             throw {
                 status: 400,
-                mensagem: "Id mov saida, id pedido, cpf, horario, quantidade e preco são obrigatórios"
+                mensagem: "Id pedido, cpf, horario, quantidade e preco são obrigatórios"
             }
         }
 
@@ -58,7 +58,7 @@ class SaidaService {
             }
         }
 
-        if(typeof horario != "time" || horario <= 0) {
+        if(typeof horario != "number" || horario <= 0) {
             throw {
                 status: 400,
                 mensagem: "Horario deve ser um número positivo"
@@ -79,11 +79,11 @@ class SaidaService {
             }
         }
 
-        novaSaida = {
-            id_pedido, 
-            cpf, 
-            horario, 
-            quantidade, 
+        const novaSaida = {
+            id_pedido,
+            cpf,
+            horario,
+            quantidade,
             preco
         }
 
@@ -139,7 +139,7 @@ class SaidaService {
         }
 
         if(horario != undefined) {
-            if(typeof horario != "time") {
+            if(typeof horario != "number" || horario <= 0) {
                 throw {
                     status: 400,
                     mensagem: "O horario deve ser um número positivo"
@@ -182,7 +182,7 @@ class SaidaService {
 
         return {
             sucesso: true,
-            mensagem: "Saida atualizado"
+            mensagem: "Saida atualizada"
         }
     }
 
@@ -207,7 +207,7 @@ class SaidaService {
 
         return {
             sucesso: true,
-            mensagem: "Saida apagado"
+            mensagem: "Saida apagada"
         }
     }
 }

@@ -2,18 +2,18 @@ const pool = require('../config/database')
 
 class NotaFiscalRepository {
     async listarNotaFiscal() {
-        const listarNotaFiscal = await pool.query('SELECT * FROM tbl_nota_fiscal')
-        return listarNotaFiscal
+        const [rows] = await pool.query('SELECT * FROM tbl_nota_fiscal')
+        return rows
     }
 
     async buscarNotaFiscalId(id) {
-        const buscarNotaFiscalId = await pool.query('SELECT * FROM tbl_nota_fiscal WHERE id = ?', [id])
-        return buscarNotaFiscalId
+        const [rows] = await pool.query('SELECT * FROM tbl_nota_fiscal WHERE id = ?', [id])
+        return rows[0]
     }
 
     async cadastrarNotaFiscal(dadosDaNotaFiscal) {
-        const cadastrarNotaFiscal = await pool.query('INSERT INTO tbl_nota_fiscal SET ?', [dadosDaNotaFiscal])
-        return cadastrarNotaFiscal.insertId
+        const [resultado] = await pool.query('INSERT INTO tbl_nota_fiscal SET ?', [dadosDaNotaFiscal])
+        return resultado.insertId
     }
 
     async atualizarNotaFiscal(id, dadosDaNotaFiscal) {
@@ -31,7 +31,7 @@ class NotaFiscalRepository {
 
         const query = `UPDATE tbl_nota_fiscal SET ${camposNotaFiscal.join(',')} WHERE id = ?`
 
-        const resultado = await pool.query(query, dadoNotaFiscal)
+        const [resultado] = await pool.query(query, dadoNotaFiscal)
 
         return resultado.affectedRows
     }

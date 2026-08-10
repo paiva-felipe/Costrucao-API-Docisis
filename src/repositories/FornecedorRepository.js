@@ -2,18 +2,18 @@ const pool = require('../config/database')
 
 class FornecedorRepository {
     async listarFornecedor() {
-        const listarFornecedor = await pool.query('SELECT * FROM tbl_fornecedor')
-        return listarFornecedor
+        const [rows] = await pool.query('SELECT * FROM tbl_fornecedor')
+        return rows
     }
 
     async buscarFornecedorId(id) {
-        const buscarFornecedorId = await pool.query('SELECT * FROM tbl_fornecedor WHERE id = ?', [id])
-        return buscarFornecedorId
+        const [rows] = await pool.query('SELECT * FROM tbl_fornecedor WHERE id = ?', [id])
+        return rows[0]
     }
 
     async cadastrarFornecedor(dadosDoFornecedor) {
-        const cadastrarFornecedor = await pool.query('INSERT INTO tbl_fornecedor SET ?', [dadosDoFornecedor])
-        return cadastrarFornecedor.insertId
+        const [resultado] = await pool.query('INSERT INTO tbl_fornecedor SET ?', [dadosDoFornecedor])
+        return resultado.insertId
     }
 
     async atualizarFornecedor(id, dadosDoFornecedor) {
@@ -31,7 +31,7 @@ class FornecedorRepository {
 
         const query = `UPDATE tbl_fornecedor SET ${camposFornecedor.join(',')} WHERE id = ?`
 
-        const resultado = await pool.query(query, dadoFornecedor)
+        const [resultado] = await pool.query(query, dadoFornecedor)
 
         return resultado.affectedRows
     }

@@ -5,7 +5,7 @@ class NotaFiscalService {
         const notafiscal = await NotaFiscalRepository.listarNotaFiscal()
 
         return {
-            sucesso: false,
+            sucesso: true,
             dados: notafiscal,
             total: notafiscal.length
         }
@@ -13,91 +13,60 @@ class NotaFiscalService {
 
     async buscarNotaFiscalId(id) {
         if(!id || isNaN(id)) {
-            throw {
-                status: 400,
-                mensagem: "Id inválido"
-            }
+            throw { status: 400, mensagem: "Id inválido" }
         }
 
         const notafiscal = await NotaFiscalRepository.buscarNotaFiscalId(id)
 
         if(!notafiscal) {
-            throw {
-                status: 404,
-                mensagem: "Nota fiscal não encontrado"
-            }
+            throw { status: 404, mensagem: "Nota fiscal não encontrada" }
         }
 
-        return {
-            sucesso: true,
-            dados: notafiscal[0]
-        }
+        return { sucesso: true, dados: notafiscal }
     }
 
     async cadastrarNotaFiscal(dados) {
         const {id_fornecedor, destinatario, remetente, servico, total, imposto} = dados
 
         if(!id_fornecedor || !destinatario || !remetente || !servico || !total || !imposto) {
-            throw {
-                status: 400,
-                mensagem: "Id fornecedor, destinatario, remetente, servico, total e imposto são obrigatórios"
-            }
+            throw { status: 400, mensagem: "Id fornecedor, destinatario, remetente, servico, total e imposto são obrigatórios" }
         }
 
         if(typeof id_fornecedor != "number" || id_fornecedor <= 0) {
-            throw {
-                status: 400,
-                mensagem: "id fornecedor deve ser um número positivo"
-            }
+            throw { status: 400, mensagem: "id fornecedor deve ser um número positivo" }
         }
 
         if(typeof total != "number" || total <= 0) {
-            throw {
-                status: 400,
-                mensagem: "Total deve ser um número positivo"
-            }
+            throw { status: 400, mensagem: "Total deve ser um número positivo" }
         }
 
         if(typeof imposto != "number" || imposto <= 0) {
-            throw {
-                status: 400,
-                mensagem: "Imposto deve ser um número positivo"
-            }
+            throw { status: 400, mensagem: "Imposto deve ser um número positivo" }
         }
 
-        novaNotaFiscal = {
-            id_fornecedor, 
-            destinatario: destinatario.trim(), 
-            remetente: remetente.trim(), 
-            servico: servico.trim(), 
+        const novaNotaFiscal = {
+            id_fornecedor,
+            destinatario: destinatario.trim(),
+            remetente: remetente.trim(),
+            servico: servico.trim(),
             total,
             imposto
         }
 
         const resultado = await NotaFiscalRepository.cadastrarNotaFiscal(novaNotaFiscal)
 
-        return {
-            sucesso: true,
-            mensagem: "Sucesso ao cadastrar",
-            resultado
-        }
+        return { sucesso: true, mensagem: "Sucesso ao cadastrar", resultado }
     }
 
     async atualizarNotaFiscal(id, dados) {
         if(!id || isNaN(id)) {
-            throw {
-                status: 400,
-                mensagem: "Id inválido"
-            }
+            throw { status: 400, mensagem: "Id inválido" }
         }
 
         const notafiscal = await NotaFiscalRepository.buscarNotaFiscalId(id)
 
         if(!notafiscal) {
-            throw {
-                status: 404,
-                mensagem: "Nota fiscal não encontrado"
-            }
+            throw { status: 404, mensagem: "Nota fiscal não encontrada" }
         }
 
         const notafiscalAtualizado = {}
@@ -105,81 +74,54 @@ class NotaFiscalService {
 
         if(id_fornecedor != undefined) {
             if(typeof id_fornecedor != "number" || id_fornecedor <= 0) {
-                throw {
-                    status: 400,
-                    mensagem: "O id fornecedor deve ser um número positivo"
-                }
+                throw { status: 400, mensagem: "O id fornecedor deve ser um número positivo" }
             }
-
             notafiscalAtualizado.id_fornecedor = id_fornecedor
         }
 
-        if(destinatario != undefined || destinatario.trim() != "") notafiscalAtualizado.destinatario = destinatario.trim()
+        if(destinatario !== undefined && destinatario.trim() != "") notafiscalAtualizado.destinatario = destinatario.trim()
 
-        if(remetente != undefined || remetente.trim() != "") notafiscalAtualizado.remetente = remetente.trim()
+        if(remetente !== undefined && remetente.trim() != "") notafiscalAtualizado.remetente = remetente.trim()
 
-        if(servico != undefined || servico.trim() != "") notafiscalAtualizado.servico = servico.trim()
+        if(servico !== undefined && servico.trim() != "") notafiscalAtualizado.servico = servico.trim()
 
         if(total != undefined) {
             if(typeof total != "number" || total <= 0) {
-                throw {
-                    status: 400,
-                    mensagem: "O total deve ser um número positivo"
-                }
+                throw { status: 400, mensagem: "O total deve ser um número positivo" }
             }
-
             notafiscalAtualizado.total = total
         }
 
         if(imposto != undefined) {
             if(typeof imposto != "number" || imposto <= 0) {
-                throw {
-                    status: 400,
-                    mensagem: "O imposto deve ser um número positivo"
-                }
+                throw { status: 400, mensagem: "O imposto deve ser um número positivo" }
             }
-
-            pedidoAtualizado.imposto = imposto
+            notafiscalAtualizado.imposto = imposto
         }
 
         if(Object.keys(notafiscalAtualizado).length == 0) {
-            throw {
-                status: 400,
-                mensagem: "Nenhum dado válido enviado para a atualização"
-            }
+            throw { status: 400, mensagem: "Nenhum dado válido enviado para a atualização" }
         }
 
         await NotaFiscalRepository.atualizarNotaFiscal(id, notafiscalAtualizado)
 
-        return {
-            sucesso: true,
-            mensagem: "Nota fiscal atualizado"
-        }
+        return { sucesso: true, mensagem: "Nota fiscal atualizada" }
     }
 
     async deletarNotaFiscal(id) {
         if(!id || isNaN(id)) {
-            throw {
-                status: 400,
-                mensagem: "Id inválido"
-            }
+            throw { status: 400, mensagem: "Id inválido" }
         }
 
         const notafiscal = await NotaFiscalRepository.buscarNotaFiscalId(id)
 
         if(!notafiscal) {
-            throw {
-                status: 404,
-                mensagem: "Nota fiscal não encontrado"
-            }
+            throw { status: 404, mensagem: "Nota fiscal não encontrada" }
         }
 
         await NotaFiscalRepository.deletarNotaFiscal(id)
 
-        return {
-            sucesso: true,
-            mensagem: "Nota fiscal apagada"
-        }
+        return { sucesso: true, mensagem: "Nota fiscal apagada" }
     }
 }
 

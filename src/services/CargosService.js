@@ -5,9 +5,9 @@ class CargoService {
         const cargos = await CargosRepository.listarCargo()
 
         return {
-            sucesso: false,
+            sucesso: true,
             dados: cargos,
-            total: Cargos.length
+            total: cargos.length
         }
     }
 

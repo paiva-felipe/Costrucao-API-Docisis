@@ -5,7 +5,7 @@ class PedidoService {
         const pedidos = await PedidoRepository.listarPedido()
 
         return {
-            sucesso: false,
+            sucesso: true,
             dados: pedidos,
             total: pedidos.length
         }
@@ -13,113 +13,76 @@ class PedidoService {
 
     async buscarPedidoId(id) {
         if(!id || isNaN(id)) {
-            throw {
-                status: 400,
-                mensagem: "Id inválido"
-            }
+            throw { status: 400, mensagem: "Id inválido" }
         }
 
         const pedido = await PedidoRepository.buscarPedidoId(id)
 
         if(!pedido) {
-            throw {
-                status: 404,
-                mensagem: "Pedido não encontrado"
-            }
+            throw { status: 404, mensagem: "Pedido não encontrado" }
         }
 
-        return {
-            sucesso: true,
-            dados: pedido[0]
-        }
+        return { sucesso: true, dados: pedido }
     }
 
     async cadastrarPedido(dados) {
         const {nome, produto} = dados
 
         if(!nome || !produto) {
-            throw {
-                status: 400,
-                mensagem: "Nome e produto são obrigatórios"
-            }
+            throw { status: 400, mensagem: "Nome e produto são obrigatórios" }
         }
 
-        novoPedido = {
+        const novoPedido = {
             nome: nome.trim(),
             produto: produto.trim(),
         }
 
         const resultado = await PedidoRepository.cadastrarPedido(novoPedido)
 
-        return {
-            sucesso: true,
-            mensagem: "Sucesso ao cadastrar",
-            resultado
-        }
+        return { sucesso: true, mensagem: "Sucesso ao cadastrar", resultado }
     }
 
     async atualizarPedido(id, dados) {
         if(!id || isNaN(id)) {
-            throw {
-                status: 400,
-                mensagem: "Id inválido"
-            }
+            throw { status: 400, mensagem: "Id inválido" }
         }
 
         const pedido = await PedidoRepository.buscarPedidoId(id)
 
         if(!pedido) {
-            throw {
-                status: 404,
-                mensagem: "Pedido não encontrado"
-            }
+            throw { status: 404, mensagem: "Pedido não encontrado" }
         }
 
         const pedidoAtualizado = {}
         const {nome, produto} = dados
 
-        if(nome != undefined || nome.trim() != "") pedidoAtualizado.nome = nome.trim()
+        if(nome !== undefined && nome.trim() != "") pedidoAtualizado.nome = nome.trim()
 
-        if(produto != undefined || nome.trim() != "") pedidoAtualizado.produto = produto.trim()
+        if(produto !== undefined && produto.trim() != "") pedidoAtualizado.produto = produto.trim()
 
         if(Object.keys(pedidoAtualizado).length == 0) {
-            throw {
-                status: 400,
-                mensagem: "Nenhum dado válido enviado para a atualização"
-            }
+            throw { status: 400, mensagem: "Nenhum dado válido enviado para a atualização" }
         }
 
         await PedidoRepository.atualizarPedido(id, pedidoAtualizado)
 
-        return {
-            sucesso: true,
-            mensagem: "Pedido atualizado"
-        }
+        return { sucesso: true, mensagem: "Pedido atualizado" }
     }
 
     async deletarPedido(id) {
         if(!id || isNaN(id)) {
-            throw {
-                status: 400,
-                mensagem: "Id inválido"
-            }
+            throw { status: 400, mensagem: "Id inválido" }
         }
 
         const pedido = await PedidoRepository.buscarPedidoId(id)
 
         if(!pedido) {
-            throw {
-                status: 404,
-                mensagem: "Pedido não encontrado"
-            }
+            throw { status: 404, mensagem: "Pedido não encontrado" }
         }
 
         await PedidoRepository.deletarPedido(id)
 
-        return {
-            sucesso: true,
-            mensagem: "Pedido apagado"
-        }
+        return { sucesso: true, mensagem: "Pedido apagado" }
     }
 }
 

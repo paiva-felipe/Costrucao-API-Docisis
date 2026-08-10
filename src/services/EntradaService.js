@@ -5,7 +5,7 @@ class EntradaService {
         const entradas = await EntradaRepository.listarEntrada()
 
         return {
-            sucesso: false,
+            sucesso: true,
             dados: entradas,
             total: entradas.length
         }
@@ -13,104 +13,67 @@ class EntradaService {
 
     async buscarEntradaId(id) {
         if(!id || isNaN(id)) {
-            throw {
-                status: 400,
-                mensagem: "Id inválido"
-            }
+            throw { status: 400, mensagem: "Id inválido" }
         }
 
         const entrada = await EntradaRepository.buscarEntradaId(id)
 
         if(!entrada) {
-            throw {
-                status: 404,
-                mensagem: "Entrada não encontrado"
-            }
+            throw { status: 404, mensagem: "Entrada não encontrada" }
         }
 
-        return {
-            sucesso: true,
-            dados: entrada[0]
-        }
+        return { sucesso: true, dados: entrada }
     }
 
     async cadastrarEntrada(dados) {
         const {id_nota_fiscal, cpf, horario, quantidade, preco} = dados
 
         if(!id_nota_fiscal || !cpf || !horario || !quantidade || !preco) {
-            throw {
-                status: 400,
-                mensagem: "O campo id nota fiscal, cpf, horario, quantidade e preço são obrigatórios"
-            }
+            throw { status: 400, mensagem: "O campo id nota fiscal, cpf, horario, quantidade e preço são obrigatórios" }
         }
 
         if(typeof id_nota_fiscal != "number" || id_nota_fiscal <= 0) {
-            throw {
-                status: 400,
-                mensagem: "Id nota fiscal deve ser um número positivo"
-            }
+            throw { status: 400, mensagem: "Id nota fiscal deve ser um número positivo" }
         }
 
         if(typeof cpf != "number" || cpf <= 0) {
-            throw {
-                status: 400,
-                mensagem: "CPF deve ser um número positivo"
-            }
+            throw { status: 400, mensagem: "CPF deve ser um número positivo" }
         }
 
         if(typeof horario != "number" || horario <= 0) {
-            throw {
-                status: 400,
-                mensagem: "Horario deve ser um número positivo"
-            }
+            throw { status: 400, mensagem: "Horario deve ser um número positivo" }
         }
 
         if(typeof quantidade != "number" || quantidade <= 0) {
-            throw {
-                status: 400,
-                mensagem: "Quantidade deve ser um número positivo"
-            }
+            throw { status: 400, mensagem: "Quantidade deve ser um número positivo" }
         }
 
         if(typeof preco != "number" || preco <= 0) {
-            throw {
-                status: 400,
-                mensagem: "Preço deve ser um número positivo"
-            }
+            throw { status: 400, mensagem: "Preço deve ser um número positivo" }
         }
 
-        novaEntrada = {
-            id_nota_fiscal, 
-            cpf, 
-            horario, 
-            quantidade, 
+        const novaEntrada = {
+            id_nota_fiscal,
+            cpf,
+            horario,
+            quantidade,
             preco
         }
 
         const resultado = await EntradaRepository.cadastrarEntrada(novaEntrada)
 
-        return {
-            sucesso: true,
-            mensagem: "Sucesso ao cadastrar",
-            resultado
-        }
+        return { sucesso: true, mensagem: "Sucesso ao cadastrar", resultado }
     }
 
     async atualizarEntrada(id, dados) {
         if(!id || isNaN(id)) {
-            throw {
-                status: 400,
-                mensagem: "Id inválido"
-            }
+            throw { status: 400, mensagem: "Id inválido" }
         }
 
         const entrada = await EntradaRepository.buscarEntradaId(id)
 
         if(!entrada) {
-            throw {
-                status: 404,
-                mensagem: "Entrada não encontrado"
-            }
+            throw { status: 404, mensagem: "Entrada não encontrada" }
         }
 
         const entradaAtualizada = {}
@@ -118,97 +81,62 @@ class EntradaService {
 
         if(id_nota_fiscal != undefined) {
             if(typeof id_nota_fiscal != "number" || id_nota_fiscal <= 0) {
-                throw {
-                    status: 400,
-                    mensagem: "O id nota fiscal deve ser um número positivo"
-                }
+                throw { status: 400, mensagem: "O id nota fiscal deve ser um número positivo" }
             }
-
             entradaAtualizada.id_nota_fiscal = id_nota_fiscal
         }
 
         if(cpf != undefined) {
             if(typeof cpf != "number" || cpf <= 0) {
-                throw {
-                    status: 400,
-                    mensagem: "O cpf deve ser um número positivo"
-                }
+                throw { status: 400, mensagem: "O cpf deve ser um número positivo" }
             }
-
             entradaAtualizada.cpf = cpf
         }
 
         if(horario != undefined) {
             if(typeof horario != "number" || horario <= 0) {
-                throw {
-                    status: 400,
-                    mensagem: "O horario deve ser um número positivo"
-                }
+                throw { status: 400, mensagem: "O horario deve ser um número positivo" }
             }
-
             entradaAtualizada.horario = horario
         }
 
         if(quantidade != undefined) {
             if(typeof quantidade != "number" || quantidade <= 0) {
-                throw {
-                    status: 400,
-                    mensagem: "A quantidade deve ser um número positivo"
-                }
+                throw { status: 400, mensagem: "A quantidade deve ser um número positivo" }
             }
-
             entradaAtualizada.quantidade = quantidade
         }
 
         if(preco != undefined) {
             if(typeof preco != "number" || preco <= 0) {
-                throw {
-                    status: 400,
-                    mensagem: "O preco deve ser um número positivo"
-                }
+                throw { status: 400, mensagem: "O preco deve ser um número positivo" }
             }
-
             entradaAtualizada.preco = preco
         }
 
         if(Object.keys(entradaAtualizada).length == 0) {
-            throw {
-                status: 400,
-                mensagem: "Nenhum dado válido enviado para a atualização"
-            }
+            throw { status: 400, mensagem: "Nenhum dado válido enviado para a atualização" }
         }
 
         await EntradaRepository.atualizarEntrada(id, entradaAtualizada)
 
-        return {
-            sucesso: true,
-            mensagem: "Entrada atualizada"
-        }
+        return { sucesso: true, mensagem: "Entrada atualizada" }
     }
 
     async deletarEntrada(id) {
         if(!id || isNaN(id)) {
-            throw {
-                status: 400,
-                mensagem: "Id inválido"
-            }
+            throw { status: 400, mensagem: "Id inválido" }
         }
 
         const entrada = await EntradaRepository.buscarEntradaId(id)
 
         if(!entrada) {
-            throw {
-                status: 404,
-                mensagem: "Entrada não encontrado"
-            }
+            throw { status: 404, mensagem: "Entrada não encontrada" }
         }
 
         await EntradaRepository.deletarEntrada(id)
 
-        return {
-            sucesso: true,
-            mensagem: "Entrada apagada"
-        }
+        return { sucesso: true, mensagem: "Entrada apagada" }
     }
 }
 

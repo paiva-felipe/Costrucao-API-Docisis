@@ -2,18 +2,18 @@ const pool = require('../config/database')
 
 class ProdutoRepository {
     async listarProduto() {
-        const listarProduto = await pool.query('SELECT * FROM tbl_produtos')
-        return listarProduto
+        const [rows] = await pool.query('SELECT * FROM tbl_produtos')
+        return rows
     }
 
     async buscarProdutoId(id) {
-        const buscarProdutoId = await pool.query('SELECT * FROM tbl_produtos WHERE id = ?', [id])
-        return buscarProdutoId
+        const [rows] = await pool.query('SELECT * FROM tbl_produtos WHERE id = ?', [id])
+        return rows[0]
     }
 
     async cadastrarProduto(dadosDoProduto) {
-        const cadastrarProduto = await pool.query('INSERT INTO tbl_produtos SET ?', [dadosDoProduto])
-        return cadastrarProduto.insertId
+        const [resultado] = await pool.query('INSERT INTO tbl_produtos SET ?', [dadosDoProduto])
+        return resultado.insertId
     }
 
     async atualizarProduto(id, dadosDoProduto) {
@@ -31,7 +31,7 @@ class ProdutoRepository {
 
         const query = `UPDATE tbl_produtos SET ${camposProduto.join(',')} WHERE id = ?`
 
-        const resultado = await pool.query(query, dadoProduto)
+        const [resultado] = await pool.query(query, dadoProduto)
 
         return resultado.affectedRows
     }

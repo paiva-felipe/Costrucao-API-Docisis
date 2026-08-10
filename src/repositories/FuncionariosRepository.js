@@ -2,18 +2,18 @@ const pool = require('../config/database')
 
 class FuncionarioRepository {
     async listarFuncionario() {
-        const listarFuncionario = await pool.query('SELECT * FROM tbl_funcionarios')
-        return listarFuncionario
+        const [rows] = await pool.query('SELECT * FROM tbl_funcionarios')
+        return rows
     }
 
     async buscarFuncionarioId(id) {
-        const buscarFuncionarioId = await pool.query('SELECT * FROM tbl_funcionarios WHERE id = ?', [id])
-        return buscarFuncionarioId
+        const [rows] = await pool.query('SELECT * FROM tbl_funcionarios WHERE id = ?', [id])
+        return rows[0]
     }
 
     async cadastrarFuncionario(dadosDoFuncionario) {
-        const cadastrarFuncionario = await pool.query('INSERT INTO tbl_funcionarios SET ?', [dadosDoFuncionario])
-        return cadastrarFuncionario.insertId
+        const [resultado] = await pool.query('INSERT INTO tbl_funcionarios SET ?', [dadosDoFuncionario])
+        return resultado.insertId
     }
 
     async atualizarFuncionario(id, dadosDoFuncionario) {
@@ -31,7 +31,7 @@ class FuncionarioRepository {
 
         const query = `UPDATE tbl_funcionarios SET ${camposFuncionario.join(',')} WHERE id = ?`
 
-        const resultado = await pool.query(query, dadoFuncionario)
+        const [resultado] = await pool.query(query, dadoFuncionario)
 
         return resultado.affectedRows
     }
