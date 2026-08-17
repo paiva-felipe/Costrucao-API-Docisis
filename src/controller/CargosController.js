@@ -1,7 +1,7 @@
 const CargosService = require('../services/CargosService')
 
-class CargoController {
-    async listarCargo(req, res) {
+class CargosController {
+    async listarCargos(req, res) {
         try {
             const resultado = await PedidoService.listarCargo()
             res.json(resultado)
@@ -72,4 +72,4 @@ class CargoController {
     }
 }
 
-module.exports = new CargoController()
+module.exports = new CargosController()
