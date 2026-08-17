@@ -58,7 +58,7 @@ class CargoService {
             }
         }
 
-        novoCargo = {
+        const novoCargo = {
             nivel_acesso_1, 
             nivel_acesso_2,
             nome_cargo: nome_cargo.trim(),
@@ -117,11 +117,9 @@ class CargoService {
             cargoAtualizado.nivel_acesso_2 = nivel_acesso_2
         }
 
-        if(nome_cargo != undefined || nome_cargo.trim() != "") cargoAtualizado.nome_cargo = nome_cargo.trim()
-            
-        if(departamento != undefined || departamento.trim() != "") cargoAtualizado.departamento = departamento.trim()
-        
-        if(jornada != undefined || jornada.trim() != "") cargoAtualizado.jornada = jornada.trim()
+        if(nome_cargo != undefined && nome_cargo.trim() != "") cargoAtualizado.nome_cargo = nome_cargo.trim()
+        if(departamento != undefined && departamento.trim() != "") cargoAtualizado.departamento = departamento.trim()
+        if(jornada != undefined && jornada.trim() != "") cargoAtualizado.jornada = jornada.trim()
 
         if(Object.keys(cargoAtualizado).length == 0) {
             throw {

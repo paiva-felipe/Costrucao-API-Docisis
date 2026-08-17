@@ -7,7 +7,7 @@ class NotaFiscalRepository {
     }
 
     async buscarNotaFiscalId(id) {
-        const [rows] = await pool.query('SELECT * FROM tbl_nota_fiscal WHERE id = ?', [id])
+        const [rows] = await pool.query('SELECT * FROM tbl_nota_fiscal WHERE id_nota_fiscal = ?', [id])
         return rows[0]
     }
 
@@ -29,7 +29,7 @@ class NotaFiscalRepository {
 
         dadoNotaFiscal.push(id)
 
-        const query = `UPDATE tbl_nota_fiscal SET ${camposNotaFiscal.join(',')} WHERE id = ?`
+        const query = `UPDATE tbl_nota_fiscal SET ${camposNotaFiscal.join(',')} WHERE id_nota_fiscal = ?`
 
         const [resultado] = await pool.query(query, dadoNotaFiscal)
 
@@ -37,7 +37,7 @@ class NotaFiscalRepository {
     }
 
     async deletarNotaFiscal(id) {
-        await pool.query('DELETE FROM tbl_nota_fiscal WHERE id = ?', [id])
+        await pool.query('DELETE FROM tbl_nota_fiscal WHERE id_nota_fiscal = ?', [id])
         return true
     }
 }

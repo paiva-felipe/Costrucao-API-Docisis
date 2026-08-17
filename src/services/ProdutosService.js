@@ -1,7 +1,7 @@
 const ProdutoRepository = require('../repositories/ProdutosRepository')
 
 class ProdutoService {
-    async listarProduto() {
+    async listarProdutos() {
         const produtos = await ProdutoRepository.listarProduto()
 
         return {
@@ -11,7 +11,7 @@ class ProdutoService {
         }
     }
 
-    async buscarProdutoId(id) {
+    async buscarProdutosId(id) {
         if(!id || isNaN(id)) {
             throw {
                 status: 400,

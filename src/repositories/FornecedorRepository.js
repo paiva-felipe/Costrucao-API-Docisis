@@ -7,7 +7,7 @@ class FornecedorRepository {
     }
 
     async buscarFornecedorId(id) {
-        const [rows] = await pool.query('SELECT * FROM tbl_fornecedor WHERE id = ?', [id])
+        const [rows] = await pool.query('SELECT * FROM tbl_fornecedor WHERE id_fornecedor = ?', [id])
         return rows[0]
     }
 
@@ -29,7 +29,7 @@ class FornecedorRepository {
 
         dadoFornecedor.push(id)
 
-        const query = `UPDATE tbl_fornecedor SET ${camposFornecedor.join(',')} WHERE id = ?`
+        const query = `UPDATE tbl_fornecedor SET ${camposFornecedor.join(',')} WHERE id_fornecedor = ?`
 
         const [resultado] = await pool.query(query, dadoFornecedor)
 
@@ -37,7 +37,7 @@ class FornecedorRepository {
     }
 
     async deletarFornecedor(id) {
-        await pool.query('DELETE FROM tbl_fornecedor WHERE id = ?', [id])
+        await pool.query('DELETE FROM tbl_fornecedor WHERE id_fornecedor = ?', [id])
         return true
     }
 }

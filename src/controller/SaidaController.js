@@ -3,7 +3,7 @@ const SaidaService = require('../services/SaidaService')
 class SaidaController {
     async listarSaidas(req, res) {
         try {
-            const resultado = await SaidaService.listarSaidas()
+            const resultado = await SaidaService.listarSaida()
             res.json(resultado)
 
         } catch (erro) {

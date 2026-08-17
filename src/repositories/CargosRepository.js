@@ -6,10 +6,10 @@ class CargosRepository {
         return rows
     }
 
-    async buscarCargoId(id) {
-        const [rows] = await pool.query('SELECT * FROM tbl_cargos WHERE id = ?', [id])
-        return rows[0]
-    }
+   async buscarCargoId(id) {
+    const [rows] = await pool.query('SELECT * FROM tbl_cargos WHERE id_cargos = ?', [id])
+    return rows[0]
+}
 
     async cadastrarCargo(dadosDoCargo) {
         const [resultado] = await pool.query('INSERT INTO tbl_cargos SET ?', [dadosDoCargo])
@@ -29,7 +29,7 @@ class CargosRepository {
 
         dadoCargo.push(id)
 
-        const query = `UPDATE tbl_cargos SET ${camposCargo.join(',')} WHERE id = ?`
+        const query = `UPDATE tbl_cargos SET ${camposCargo.join(',')} WHERE id_cargos = ?`
 
         const [resultado] = await pool.query(query, dadoCargo)
 
@@ -37,7 +37,7 @@ class CargosRepository {
     }
 
     async deletarCargo(id) {
-        await pool.query('DELETE FROM tbl_cargos WHERE id = ?', [id])
+        await pool.query('DELETE FROM tbl_cargos WHERE id_cargos = ?', [id])
         return true
     }
 }

@@ -3,7 +3,7 @@ const EstoqueService = require('../services/EstoqueService')
 class EstoqueController {
     async listarEstoques(req, res) {
         try {
-            const resultado = await EstoqueService.listarEstoques()
+            const resultado = await EstoqueService.listarEstoque()
             res.json(resultado)
 
         } catch (erro) {

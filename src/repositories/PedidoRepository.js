@@ -7,7 +7,7 @@ class PedidoRepository {
     }
 
     async buscarPedidoId(id) {
-        const [rows] = await pool.query('SELECT * FROM tbl_pedido WHERE id = ?', [id])
+        const [rows] = await pool.query('SELECT * FROM tbl_pedido WHERE id_pedido = ?', [id])
         return rows[0]
     }
 
@@ -29,7 +29,7 @@ class PedidoRepository {
 
         dadoPedido.push(id)
 
-        const query = `UPDATE tbl_pedido SET ${camposPedido.join(',')} WHERE id = ?`
+        const query = `UPDATE tbl_pedido SET ${camposPedido.join(',')} WHERE id_pedido = ?`
 
         const [resultado] = await pool.query(query, dadoPedido)
 
@@ -37,7 +37,7 @@ class PedidoRepository {
     }
 
     async deletarPedido(id) {
-        await pool.query('DELETE FROM tbl_pedido WHERE id = ?', [id])
+        await pool.query('DELETE FROM tbl_pedido WHERE id_pedido = ?', [id])
         return true
     }
 }

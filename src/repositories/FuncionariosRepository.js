@@ -7,7 +7,7 @@ class FuncionarioRepository {
     }
 
     async buscarFuncionarioId(id) {
-        const [rows] = await pool.query('SELECT * FROM tbl_funcionarios WHERE id = ?', [id])
+        const [rows] = await pool.query('SELECT * FROM tbl_funcionarios WHERE id_funcionario = ?', [id])
         return rows[0]
     }
 
@@ -29,7 +29,7 @@ class FuncionarioRepository {
 
         dadoFuncionario.push(id)
 
-        const query = `UPDATE tbl_funcionarios SET ${camposFuncionario.join(',')} WHERE id = ?`
+        const query = `UPDATE tbl_funcionarios SET ${camposFuncionario.join(',')} WHERE id_funcionario = ?`
 
         const [resultado] = await pool.query(query, dadoFuncionario)
 
@@ -37,7 +37,7 @@ class FuncionarioRepository {
     }
 
     async deletarFuncionario(id) {
-        await pool.query('DELETE FROM tbl_funcionarios WHERE id = ?', [id])
+        await pool.query('DELETE FROM tbl_funcionarios WHERE id_funcionario = ?', [id])
         return true
     }
 }

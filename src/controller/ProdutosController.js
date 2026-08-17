@@ -1,3 +1,5 @@
+const ProdutoService = require('../services/ProdutosService')
+
 class ProdutosController {
     async listarProdutos(req, res) {
         try {
@@ -13,9 +15,9 @@ class ProdutosController {
         }
     }
 
-    async buscarProdutoId(req, res) {
+    async buscarProdutosId(req, res) {
         try {
-            const resultado = await ProdutoService.buscarProdutoId(req.params.id)
+            const resultado = await ProdutoService.buscarProdutosId(req.params.id)
             res.json(resultado)
 
         } catch (erro) {

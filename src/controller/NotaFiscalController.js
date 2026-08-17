@@ -38,7 +38,7 @@ class NotaFiscalController {
                 imagem: req.file ? req.file.filename : null // Salva o nome do arquivo se ele existir
             };
 
-            const resultado = await NotaFiscalService.cadastrarNotaFiscal(dadosPedido);
+            const resultado = await NotaFiscalService.cadastrarNotaFiscal(dadosNotaFiscal);
             res.status(201).json(resultado);
         } catch (erro) {
             console.error("Erro ao cadastrar Nota Fiscal:", erro);
@@ -54,7 +54,7 @@ class NotaFiscalController {
 
     async atualizarNotaFiscal(req, res) {
         try {
-            const resultado = await PedidoService.atualizarNotaFiscal(req.params.id, req.body);
+            const resultado = await NotaFiscalService.atualizarNotaFiscal(req.params.id, req.body);
             res.json(resultado);
         } catch (erro) {
             res.status(erro.status || 500).json({
@@ -67,7 +67,7 @@ class NotaFiscalController {
 
     async deletarNotaFiscal(req, res) {
         try {
-            const resultado = await PedidoService.deletarNotaFiscal(req.params.id);
+            const resultado = await NotaFiscalService.deletarNotaFiscal(req.params.id);
             res.json(resultado);
         } catch (erro) {
             res.status(erro.status || 500).json({

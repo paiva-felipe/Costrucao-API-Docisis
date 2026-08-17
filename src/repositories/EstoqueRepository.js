@@ -7,7 +7,7 @@ class EstoqueRepository {
     }
 
     async buscarEstoqueId(id) {
-        const [rows] = await pool.query('SELECT * FROM tbl_estoque WHERE id = ?', [id])
+        const [rows] = await pool.query('SELECT * FROM tbl_estoque WHERE id_produtos = ?', [id])
         return rows[0]
     }
 
@@ -29,7 +29,7 @@ class EstoqueRepository {
 
         dadoEstoque.push(id)
 
-        const query = `UPDATE tbl_estoque SET ${camposEstoque.join(',')} WHERE id = ?`
+        const query = `UPDATE tbl_estoque SET ${camposEstoque.join(',')} WHERE id_produtos = ?`
 
         const [resultado] = await pool.query(query, dadoEstoque)
 
@@ -37,7 +37,7 @@ class EstoqueRepository {
     }
 
     async deletarEstoque(id) {
-        await pool.query('DELETE FROM tbl_estoque WHERE id = ?', [id])
+        await pool.query('DELETE FROM tbl_estoque WHERE id_produtos = ?', [id])
         return true
     }
 }

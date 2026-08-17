@@ -7,9 +7,9 @@ class ProdutoRepository {
     }
 
     async buscarProdutoId(id) {
-        const [rows] = await pool.query('SELECT * FROM tbl_produtos WHERE id = ?', [id])
-        return rows[0]
-    }
+    const [rows] = await pool.query('SELECT * FROM tbl_produtos WHERE id_produtos = ?', [id])
+    return rows[0]
+}
 
     async cadastrarProduto(dadosDoProduto) {
         const [resultado] = await pool.query('INSERT INTO tbl_produtos SET ?', [dadosDoProduto])
@@ -29,7 +29,7 @@ class ProdutoRepository {
 
         dadoProduto.push(id)
 
-        const query = `UPDATE tbl_produtos SET ${camposProduto.join(',')} WHERE id = ?`
+        const query = `UPDATE tbl_produtos SET ${camposProduto.join(',')} WHERE id_produtos = ?`
 
         const [resultado] = await pool.query(query, dadoProduto)
 
@@ -37,7 +37,7 @@ class ProdutoRepository {
     }
 
     async deletarProduto(id) {
-        await pool.query('DELETE FROM tbl_produtos WHERE id = ?', [id])
+        await pool.query('DELETE FROM tbl_produtos WHERE id_produtos = ?', [id])
         return true
     }
 }

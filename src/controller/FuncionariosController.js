@@ -3,7 +3,7 @@ const FuncionarioService = require('../services/FuncionarioService')
 class FuncionariosController {
     async listarFuncionarios(req, res) {
         try {
-            const resultado = await FuncionarioService.listarFuncionarios()
+            const resultado = await FuncionarioService.listarFuncionario()
             res.json(resultado)
 
         } catch (erro) {

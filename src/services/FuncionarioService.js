@@ -32,10 +32,9 @@ class FuncionarioService {
             throw { status: 400, mensagem: "CPF, id cargos, nome e email são obrigatórios" }
         }
 
-        if(typeof cpf != "number" || cpf <= 0) {
-            throw { status: 400, mensagem: "CPF deve ser um número positivo" }
+        if(typeof cpf != "string" || cpf.trim() == "") {
+            throw { status: 400, mensagem: "CPF é obrigatório" }
         }
-
         if(typeof id_cargos != "number" || id_cargos <= 0) {
             throw { status: 400, mensagem: "id cargos deve ser um número positivo" }
         }

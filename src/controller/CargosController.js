@@ -3,7 +3,7 @@ const CargosService = require('../services/CargosService')
 class CargosController {
     async listarCargos(req, res) {
         try {
-            const resultado = await PedidoService.listarCargo()
+            const resultado = await CargosService.listarCargo()
             res.json(resultado)
 
         } catch (erro) {

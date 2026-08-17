@@ -7,7 +7,7 @@ class EntradaRepository {
     }
 
     async buscarEntradaId(id) {
-        const [rows] = await pool.query('SELECT * FROM tbl_mov_entrada WHERE id = ?', [id])
+        const [rows] = await pool.query('SELECT * FROM tbl_mov_entrada WHERE id_mov_entrada = ?', [id])
         return rows[0]
     }
 
@@ -29,7 +29,7 @@ class EntradaRepository {
 
         dadoEntrada.push(id)
 
-        const query = `UPDATE tbl_mov_entrada SET ${camposEntrada.join(',')} WHERE id = ?`
+        const query = `UPDATE tbl_mov_entrada SET ${camposEntrada.join(',')} WHERE id_mov_entrada = ?`
 
         const [resultado] = await pool.query(query, dadoEntrada)
 
@@ -37,7 +37,7 @@ class EntradaRepository {
     }
 
     async deletarEntrada(id) {
-        await pool.query('DELETE FROM tbl_mov_entrada WHERE id = ?', [id])
+        await pool.query('DELETE FROM tbl_mov_entrada WHERE id_mov_entrada = ?', [id])
         return true
     }
 }

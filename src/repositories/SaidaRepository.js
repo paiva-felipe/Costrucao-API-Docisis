@@ -7,7 +7,7 @@ class SaidaRepository {
     }
 
     async buscarSaidaId(id) {
-        const [rows] = await pool.query('SELECT * FROM tbl_mov_saida WHERE id = ?', [id])
+        const [rows] = await pool.query('SELECT * FROM tbl_mov_saida WHERE id_mov_saida = ?', [id])
         return rows[0]
     }
 
@@ -29,7 +29,7 @@ class SaidaRepository {
 
         dadoSaida.push(id)
 
-        const query = `UPDATE tbl_mov_saida SET ${camposSaida.join(',')} WHERE id = ?`
+        const query = `UPDATE tbl_mov_saida SET ${camposSaida.join(',')} WHERE id_mov_saida = ?`
 
         const [resultado] = await pool.query(query, dadoSaida)
 
@@ -37,7 +37,7 @@ class SaidaRepository {
     }
 
     async deletarSaida(id) {
-        await pool.query('DELETE FROM tbl_mov_saida WHERE id = ?', [id])
+        await pool.query('DELETE FROM tbl_mov_saida WHERE id_mov_saida = ?', [id])
         return true
     }
 }

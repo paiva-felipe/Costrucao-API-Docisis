@@ -36,12 +36,12 @@ class EntradaService {
             throw { status: 400, mensagem: "Id nota fiscal deve ser um número positivo" }
         }
 
-        if(typeof cpf != "number" || cpf <= 0) {
-            throw { status: 400, mensagem: "CPF deve ser um número positivo" }
+        if(typeof cpf != "string" || cpf.trim() == "") {
+            throw { status: 400, mensagem: "CPF é obrigatório" }
         }
 
-        if(typeof horario != "number" || horario <= 0) {
-            throw { status: 400, mensagem: "Horario deve ser um número positivo" }
+        if(typeof horario != "string" || horario.trim() == "") {
+            throw { status: 400, mensagem: "Horario é obrigatório" }
         }
 
         if(typeof quantidade != "number" || quantidade <= 0) {
