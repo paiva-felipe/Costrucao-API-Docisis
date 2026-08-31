@@ -37,5 +37,7 @@ const SaidaRoutes = require('./SaidaRoutes')
  
 router.use('/saidas',SaidaRoutes)
 
+const RelatorioRoutes = require('./RelatorioRoutes')
+router.use('/relatorios', RelatorioRoutes)
  
 module.exports = router
