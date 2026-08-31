@@ -4,160 +4,182 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cadastrar Novo Funcionário - DoceGestão</title>
-  <!-- Esse é o CSS gerado pelo Tailwind CLI a partir do input.css -->
-  <link rel="stylesheet" href="css/output.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="min-h-screen bg-cream text-cocoa-900 flex">
+<body class="min-h-screen bg-[#FAFAFA] text-[#4A3F39] flex font-sans">
 
-  <!-- Sidebar -->
-  <aside class="w-60 shrink-0 border-r border-cocoa-100 flex flex-col justify-between py-6">
+  <aside class="w-64 shrink-0 bg-[#F5F3EF] border-r border-gray-200 flex flex-col justify-between">
     <div>
-      <div class="px-6 pb-6 border-b border-cocoa-100">
-        <p class="font-semibold">Confeitaria</p>
-        <p class="text-xs text-cocoa-400">Gestão Premium</p>
+      <div class="px-6 py-6 border-b border-gray-200 bg-white/50">
+        <h1 class="text-2xl font-bold text-[#875C46]">DoceGestão</h1>
       </div>
 
-      <nav class="mt-6 flex flex-col gap-1 px-3">
-        <a href="#" class="flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-sm text-cocoa-400 hover:bg-cocoa-50">
+      <div class="px-6 py-5">
+        <p class="font-bold text-[#875C46] text-lg leading-tight">Confeitaria</p>
+        <p class="text-xs text-gray-500">Gestão Premium</p>
+      </div>
+
+      <nav class="mt-2 flex flex-col gap-1 px-4">
+        <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-gray-500 hover:bg-gray-200/50 transition-colors">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
           Dashboard
         </a>
-        <a href="#" class="flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-sm text-cocoa-400 hover:bg-cocoa-50">
+        <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-gray-500 hover:bg-gray-200/50 transition-colors">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
           Estoque
         </a>
-        <a href="#" class="flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-sm font-medium bg-cocoa-50 text-cocoa-500">
+        <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium bg-[#D1A27A] text-white shadow-sm">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
           Admin
         </a>
       </nav>
     </div>
 
-    <div class="px-3">
-      <button type="button" class="w-full rounded-lg bg-cocoa-800 text-cream text-sm font-medium py-2.5 hover:bg-cocoa-900">
-        + Novo Item
+    <div class="p-5">
+      <button type="button" class="w-full rounded-lg bg-[#875C46] text-white text-sm font-medium py-3 hover:bg-[#6D4936] transition-colors flex items-center justify-center gap-2">
+        <span>+</span> Novo Item
       </button>
     </div>
   </aside>
 
-  <!-- Main -->
-  <div class="flex-1 flex flex-col">
+  <div class="flex-1 flex flex-col h-screen overflow-hidden">
 
-    <!-- Top bar -->
-    <header class="flex items-center justify-between px-8 py-4 border-b border-cocoa-100">
-      <p class="text-lg font-semibold text-cocoa-500">DoceGestão</p>
-      <div class="flex items-center gap-6 text-sm">
-        <span class="text-cocoa-400">Dashboard</span>
-        <span class="text-cocoa-500 font-medium border-b-2 border-cocoa-500 pb-1">Funcionários</span>
+    <header class="h-[73px] flex items-center justify-end px-8 bg-white border-b border-gray-200 shrink-0">
+      <div class="flex items-center gap-8 text-sm">
+        <div class="flex items-center gap-6">
+          <span class="text-gray-500 font-medium cursor-pointer hover:text-[#875C46]">Dashboard</span>
+          <span class="text-[#875C46] font-bold border-b-2 border-[#875C46] py-6 cursor-pointer">Funcionários</span>
+        </div>
+        
+        <div class="flex items-center gap-4 border-l border-gray-200 pl-6 text-gray-500">
+          <button class="hover:text-[#875C46]"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg></button>
+          <button class="hover:text-[#875C46]"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg></button>
+          <img src="https://i.pravatar.cc/150?img=47" alt="User" class="w-8 h-8 rounded-full border border-gray-300 ml-2" />
+        </div>
       </div>
     </header>
 
-    <!-- Form -->
-    <main class="flex-1 overflow-y-auto px-8 py-10">
-      <form class="max-w-3xl mx-auto" action="#" method="POST">
+    <main class="flex-1 overflow-y-auto p-10">
+      <form class="max-w-[850px] mx-auto" action="#" method="POST">
 
         <div class="text-center mb-8">
-          <h1 class="text-2xl font-semibold">Cadastrar Novo Funcionário</h1>
-          <p class="text-sm text-cocoa-400 mt-1">Preencha as informações para criar um novo acesso ao sistema.</p>
+          <h2 class="text-2xl font-bold text-[#6D4936]">Cadastrar Novo Funcionário</h2>
+          <p class="text-sm text-gray-500 mt-1">Preencha as informações para criar um novo acesso ao sistema.</p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-[220px_1fr] gap-5 mb-5">
-
-          <!-- Foto -->
-          <div class="rounded-xl border border-cocoa-100 bg-white p-6 flex flex-col items-center justify-center text-center py-8">
-            <div id="preview-foto" class="w-20 h-20 rounded-full bg-blush-200 flex items-center justify-center mb-3 overflow-hidden bg-cover bg-center">
-              <span class="text-blush-500">📷</span>
+        <div class="flex flex-col md:flex-row gap-6 mb-6">
+          
+          <div class="w-full md:w-[280px] shrink-0 rounded-xl border border-gray-200 bg-white p-6 flex flex-col items-center justify-center text-center shadow-sm">
+            <div class="relative group cursor-pointer">
+              <div class="w-24 h-24 rounded-full border-2 border-pink-200 bg-white flex items-center justify-center mb-4 mx-auto overflow-hidden">
+                <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+              </div>
+              <input type="file" class="absolute inset-0 w-full h-full opacity-0 cursor-pointer" accept="image/*">
             </div>
-            <p class="text-xs font-medium">UPLOAD DE FOTO</p>
-            <p class="text-[11px] text-cocoa-400 mt-1 px-4">Formatos JPG, PNG. Máx 2MB.</p>
-            <input id="input-foto" type="file" name="foto" accept="image/png, image/jpeg" class="mt-3 text-xs" />
+            <p class="text-[11px] font-bold text-[#875C46] tracking-wider mb-1">UPLOAD DE FOTO</p>
+            <p class="text-[11px] text-gray-400">Formatos JPG, PNG. Máx 2MB.</p>
           </div>
 
-          <!-- Dados pessoais -->
-          <div class="rounded-xl border border-cocoa-100 bg-white p-6">
-            <p class="text-sm font-semibold mb-5">Dados Pessoais</p>
+          <div class="flex-1 rounded-xl border border-gray-200 bg-white p-6 shadow-sm">
+            <div class="flex items-center gap-2 mb-5">
+              <svg class="w-5 h-5 text-[#875C46]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H5a2 2 0 00-2 2v9a2 2 0 002 2h14a2 2 0 002-2V8a2 2 0 00-2-2h-5m-4 0V5a2 2 0 114 0v1m-4 0a2 2 0 104 0m-5 8a2 2 0 100-4 2 2 0 000 4zm0 0c1.306 0 2.417.835 2.83 2M9 14a3.001 3.001 0 00-2.83 2M15 11h3m-3 4h2"></path></svg>
+              <h3 class="text-sm font-bold text-[#6D4936]">Dados Pessoais</h3>
+            </div>
 
-            <label class="block">
-              <span class="block text-xs font-medium mb-1.5">Nome completo</span>
-              <input type="text" name="nome_completo" placeholder="Ex: Maria Oliveira"
-                class="w-full rounded-lg border border-cocoa-100 bg-cream px-3.5 py-2.5 text-sm placeholder:text-cocoa-300 focus:outline-none focus:ring-2 focus:ring-cocoa-500/30" />
+            <label class="block mb-4">
+              <span class="block text-xs font-bold text-gray-700 mb-1.5">Nome completo</span>
+              <input type="text" placeholder="Ex: Maria Oliveira" class="w-full rounded-lg border border-gray-200 bg-[#FAFAFA] px-4 py-2.5 text-sm placeholder:text-gray-400 focus:outline-none focus:border-[#D1A27A] focus:ring-1 focus:ring-[#D1A27A]" />
             </label>
 
-            <div class="grid grid-cols-2 gap-4 mt-4">
+            <div class="grid grid-cols-2 gap-4">
               <label class="block">
-                <span class="block text-xs font-medium mb-1.5">CPF</span>
-                <input type="text" name="cpf" placeholder="000.000.000-00"
-                  class="w-full rounded-lg border border-cocoa-100 bg-cream px-3.5 py-2.5 text-sm placeholder:text-cocoa-300 focus:outline-none focus:ring-2 focus:ring-cocoa-500/30" />
+                <span class="block text-xs font-bold text-gray-700 mb-1.5">CPF</span>
+                <input type="text" placeholder="000.000.000-00" class="w-full rounded-lg border border-gray-200 bg-[#FAFAFA] px-4 py-2.5 text-sm placeholder:text-gray-400 focus:outline-none focus:border-[#D1A27A] focus:ring-1 focus:ring-[#D1A27A]" />
               </label>
               <label class="block">
-                <span class="block text-xs font-medium mb-1.5">Idade</span>
-                <input type="number" name="idade" placeholder="25"
-                  class="w-full rounded-lg border border-cocoa-100 bg-cream px-3.5 py-2.5 text-sm placeholder:text-cocoa-300 focus:outline-none focus:ring-2 focus:ring-cocoa-500/30" />
+                <span class="block text-xs font-bold text-gray-700 mb-1.5">Idade</span>
+                <input type="number" placeholder="25" class="w-full rounded-lg border border-gray-200 bg-[#FAFAFA] px-4 py-2.5 text-sm placeholder:text-gray-400 focus:outline-none focus:border-[#D1A27A] focus:ring-1 focus:ring-[#D1A27A]" />
               </label>
             </div>
           </div>
         </div>
 
-        <!-- Nível de acesso -->
-        <div class="rounded-xl border border-cocoa-100 bg-white p-6 mb-5">
-          <p class="text-sm font-semibold mb-5">Nível de Acesso</p>
-          <div class="grid grid-cols-2 gap-4">
-
-            <label id="opcao-administrador" class="nivel-acesso-opcao flex items-start gap-3 rounded-xl border border-cocoa-300 bg-cocoa-50 p-4 cursor-pointer">
-              <input type="radio" name="nivel_acesso" value="administrador" checked class="mt-1" />
-              <div>
-                <p class="text-sm font-medium">Administrador</p>
-                <p class="text-xs text-cocoa-400 mt-1">Acesso total ao sistema, relatórios financeiros e gestão de usuários.</p>
+        <div class="rounded-xl border border-gray-200 bg-white p-6 mb-6 shadow-sm">
+          <div class="flex items-center gap-2 mb-5">
+            <svg class="w-5 h-5 text-[#875C46]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"></path></svg>
+            <h3 class="text-sm font-bold text-[#6D4936]">Nível de Acesso</h3>
+          </div>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            
+            <label class="flex items-start justify-between rounded-xl border-2 border-[#D1A27A] bg-[#FDF9F4] p-4 cursor-pointer transition-colors">
+              <div class="flex gap-4">
+                <div class="bg-[#EEDBCE] p-2.5 rounded-lg h-fit">
+                  <svg class="w-5 h-5 text-[#875C46]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                </div>
+                <div>
+                  <p class="text-sm font-bold text-[#4A3F39]">Administrador</p>
+                  <p class="text-[11px] text-gray-500 mt-1 leading-relaxed">Acesso total ao sistema, relatórios financeiros e gestão de usuários.</p>
+                </div>
               </div>
+              <input type="radio" name="nivel_acesso" value="administrador" checked class="mt-1 w-4 h-4 accent-[#875C46]" />
             </label>
 
-            <label id="opcao-funcionario" class="nivel-acesso-opcao flex items-start gap-3 rounded-xl border border-cocoa-100 bg-white p-4 cursor-pointer">
-              <input type="radio" name="nivel_acesso" value="funcionario" class="mt-1" />
-              <div>
-                <p class="text-sm font-medium">Funcionário</p>
-                <p class="text-xs text-cocoa-400 mt-1">Acesso operacional: controle de estoque, entradas e saídas diárias.</p>
+            <label class="flex items-start justify-between rounded-xl border border-gray-200 bg-[#FAFAFA] p-4 cursor-pointer hover:border-[#D1A27A] transition-colors">
+              <div class="flex gap-4">
+                <div class="bg-pink-100/50 p-2.5 rounded-lg h-fit">
+                  <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path></svg>
+                </div>
+                <div>
+                  <p class="text-sm font-bold text-[#4A3F39]">Funcionário</p>
+                  <p class="text-[11px] text-gray-500 mt-1 leading-relaxed">Acesso operacional: controle de estoque, entradas e saídas diárias.</p>
+                </div>
               </div>
+              <input type="radio" name="nivel_acesso" value="funcionario" class="mt-1 w-4 h-4 accent-[#875C46]" />
             </label>
 
           </div>
         </div>
 
-        <!-- Contato -->
-        <div class="rounded-xl border border-cocoa-100 bg-white p-6 mb-5">
-          <p class="text-sm font-semibold mb-5">Contato</p>
-          <div class="grid grid-cols-2 gap-4">
+        <div class="rounded-xl border border-gray-200 bg-white p-6 mb-6 shadow-sm">
+          <div class="flex items-center gap-2 mb-5">
+            <svg class="w-5 h-5 text-[#875C46]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+            <h3 class="text-sm font-bold text-[#6D4936]">Contato</h3>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <label class="block">
-              <span class="block text-xs font-medium mb-1.5">Email</span>
-              <input type="email" name="email" placeholder="maria@confeitaria.com"
-                class="w-full rounded-lg border border-cocoa-100 bg-cream px-3.5 py-2.5 text-sm placeholder:text-cocoa-300 focus:outline-none focus:ring-2 focus:ring-cocoa-500/30" />
+              <span class="block text-xs font-bold text-gray-700 mb-1.5">Email</span>
+              <input type="email" placeholder="maria@confeitaria.com" class="w-full rounded-lg border border-gray-200 bg-[#FAFAFA] px-4 py-2.5 text-sm placeholder:text-gray-400 focus:outline-none focus:border-[#D1A27A] focus:ring-1 focus:ring-[#D1A27A]" />
             </label>
             <label class="block">
-              <span class="block text-xs font-medium mb-1.5">Telefone</span>
-              <input type="text" name="telefone" placeholder="(00) 00000-0000"
-                class="w-full rounded-lg border border-cocoa-100 bg-cream px-3.5 py-2.5 text-sm placeholder:text-cocoa-300 focus:outline-none focus:ring-2 focus:ring-cocoa-500/30" />
+              <span class="block text-xs font-bold text-gray-700 mb-1.5">Telefone</span>
+              <input type="text" placeholder="(00) 00000-0000" class="w-full rounded-lg border border-gray-200 bg-[#FAFAFA] px-4 py-2.5 text-sm placeholder:text-gray-400 focus:outline-none focus:border-[#D1A27A] focus:ring-1 focus:ring-[#D1A27A]" />
             </label>
           </div>
         </div>
 
-        <!-- Segurança -->
-        <div class="rounded-xl border border-cocoa-100 bg-white p-6 mb-8">
-          <p class="text-sm font-semibold mb-5">Segurança</p>
-          <div class="grid grid-cols-2 gap-4">
+        <div class="rounded-xl border border-gray-200 bg-white p-6 mb-8 shadow-sm">
+          <div class="flex items-center gap-2 mb-5">
+            <svg class="w-5 h-5 text-[#875C46]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+            <h3 class="text-sm font-bold text-[#6D4936]">Segurança</h3>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <label class="block">
-              <span class="block text-xs font-medium mb-1.5">Senha</span>
-              <input type="password" name="senha" placeholder="••••••••"
-                class="w-full rounded-lg border border-cocoa-100 bg-cream px-3.5 py-2.5 text-sm placeholder:text-cocoa-300 focus:outline-none focus:ring-2 focus:ring-cocoa-500/30" />
+              <span class="block text-xs font-bold text-gray-700 mb-1.5">Senha</span>
+              <input type="password" placeholder="••••••••" class="w-full rounded-lg border border-gray-200 bg-[#FAFAFA] px-4 py-2.5 text-sm placeholder:text-gray-400 focus:outline-none focus:border-[#D1A27A] focus:ring-1 focus:ring-[#D1A27A]" />
             </label>
             <label class="block">
-              <span class="block text-xs font-medium mb-1.5">Confirmar senha</span>
-              <input type="password" name="confirmar_senha" placeholder="••••••••"
-                class="w-full rounded-lg border border-cocoa-100 bg-cream px-3.5 py-2.5 text-sm placeholder:text-cocoa-300 focus:outline-none focus:ring-2 focus:ring-cocoa-500/30" />
+              <span class="block text-xs font-bold text-gray-700 mb-1.5">Confirmar senha</span>
+              <input type="password" placeholder="••••••••" class="w-full rounded-lg border border-gray-200 bg-[#FAFAFA] px-4 py-2.5 text-sm placeholder:text-gray-400 focus:outline-none focus:border-[#D1A27A] focus:ring-1 focus:ring-[#D1A27A]" />
             </label>
           </div>
         </div>
 
-        <div class="flex justify-end gap-3">
-          <button type="button" class="px-5 py-2.5 rounded-lg text-sm font-medium bg-blush-200 text-blush-800 hover:bg-blush-300">
+        <div class="flex justify-end gap-4">
+          <button type="button" class="px-8 py-3 rounded-lg text-sm font-bold bg-[#FCE4EC] text-[#A65B6E] hover:bg-pink-200 transition-colors">
             Cancelar
           </button>
-          <button type="submit" class="px-5 py-2.5 rounded-lg text-sm font-medium bg-cocoa-500 text-white hover:bg-cocoa-600">
+          <button type="submit" class="px-8 py-3 rounded-lg text-sm font-bold bg-[#875C46] text-white hover:bg-[#6D4936] transition-colors shadow-md">
             Criar Conta
           </button>
         </div>
@@ -166,6 +188,5 @@
     </main>
   </div>
 
-  <script src="script.js"></script>
 </body>
 </html>

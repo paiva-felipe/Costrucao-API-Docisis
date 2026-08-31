@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gestão de Equipe - DoceGestão</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen bg-[#FAFAFA] text-[#4A3F39] flex font-sans">
+
+  <!-- Sidebar -->
+  <aside class="w-64 shrink-0 bg-[#F5F3EF] border-r border-gray-200 flex flex-col justify-between p-6">
+    <div>
+      <!-- Logo -->
+      <div class="mb-8">
+        <h1 class="text-2xl font-bold text-[#875C46] leading-none">DoceGestão</h1>
+        <p class="text-[10px] tracking-widest text-gray-500 font-semibold uppercase mt-1">Gestão Premium</p>
+      </div>
+
+      <!-- Navegação -->
+      <nav class="flex flex-col gap-1.5">
+        <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-200/50 transition-colors">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path></svg>
+          Dashboard
+        </a>
+        <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-200/50 transition-colors">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
+          Estoque
+        </a>
+        <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-semibold bg-[#D8A87D] text-white shadow-sm">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+          Admin
+        </a>
+        <a href="#" class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-gray-600 hover:bg-gray-200/50 transition-colors">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          Histórico
+        </a>
+      </nav>
+    </div>
+
+    <!-- Perfil no Rodapé da Sidebar -->
+    <div class="flex items-center gap-3 p-3 bg-white/70 rounded-xl border border-gray-200/60 shadow-sm">
+      <div class="w-9 h-9 rounded-full bg-[#EEDBCE] text-[#875C46] flex items-center justify-center font-bold text-xs">
+        JD
+      </div>
+      <div class="overflow-hidden">
+        <p class="text-xs font-bold text-gray-800 truncate">João Doceiro</p>
+        <p class="text-[10px] text-gray-500 truncate">Proprietário</p>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Conteúdo Principal -->
+  <main class="flex-1 overflow-y-auto p-10">
+    <div class="max-w-6xl mx-auto space-y-6">
+
+      <!-- Cabeçalho -->
+      <div class="flex items-center justify-between">
+        <div>
+          <h2 class="text-2xl font-bold text-[#6D4936]">Gestão de Funcionários</h2>
+          <p class="text-sm text-gray-500 mt-0.5">Controle de acessos, permissões e atividades da equipe.</p>
+        </div>
+        <button type="button" class="bg-[#875C46] hover:bg-[#6D4936] text-white px-5 py-2.5 rounded-lg text-sm font-medium flex items-center gap-2 shadow-sm transition-colors">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"></path></svg>
+          Novo Funcionário
+        </button>
+      </div>
+
+      <!-- Barra de Busca e Filtros -->
+      <div class="bg-white rounded-xl border border-gray-200 p-3 flex flex-wrap gap-3 shadow-sm items-center">
+        <div class="relative flex-1 min-w-[240px]">
+          <svg class="w-4 h-4 text-gray-400 absolute left-3.5 top-1/2 -translate-y-1/2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+          <input type="text" placeholder="Buscar por nome ou cargo..." class="w-full pl-10 pr-4 py-2 bg-[#FAFAFA] border border-gray-200 rounded-lg text-sm focus:outline-none focus:border-[#D8A87D]" />
+        </div>
+        <button class="flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 rounded-lg text-xs font-semibold text-gray-700 hover:bg-gray-50">
+          <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"></path></svg>
+          Filtrar
+        </button>
+        <button class="flex items-center gap-2 px-4 py-2 bg-white border border-gray-200 rounded-lg text-xs font-semibold text-gray-700 hover:bg-gray-50">
+          <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4h13M3 8h9m-9 4h6m4 0l4-4m0 0l4 4m-4-4v12"></path></svg>
+          Ordenar
+        </button>
+      </div>
+
+      <!-- Grid de Cartões dos Funcionários -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+
+        <!-- Card 1: Mariana Silva -->
+        <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-sm flex flex-col justify-between">
+          <div class="p-6 text-center flex flex-col items-center">
+            <div class="relative mb-3">
+              <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=150" alt="Mariana Silva" class="w-20 h-20 rounded-full object-cover border-2 border-white shadow-sm" />
+              <span class="absolute bottom-1 right-1 w-3.5 h-3.5 bg-emerald-500 border-2 border-white rounded-full"></span>
+            </div>
+            <h3 class="font-bold text-gray-800 text-sm">Mariana Silva</h3>
+            <p class="text-xs text-gray-500 mt-0.5 mb-3">Chef Confeiteira</p>
+            <span class="bg-emerald-50 text-emerald-600 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">Ativo</span>
+          </div>
+          <div class="grid grid-cols-3 border-t border-gray-100 bg-[#FAFAFA] divide-x divide-gray-100 text-[10px] text-gray-500 font-bold uppercase tracking-wider">
+            <button class="py-3 flex flex-col items-center justify-center gap-1 hover:bg-gray-100/80 transition-colors">
+              <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"></path></svg>
+              Acessos
+            </button>
+            <button class="py-3 flex flex-col items-center justify-center gap-1 hover:bg-gray-100/80 transition-colors">
+              <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
+              Logs
+            </button>
+            <button class="py-3 flex flex-col items-center justify-center gap-1 hover:bg-gray-100/80 transition-colors">
+              <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"></path></svg>
+              Bloquear
+            </button>
+          </div>
+        </div>
+
+        <!-- Card 2: Ricardo Gomes -->
+        <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-sm flex flex-col justify-between">
+          <div class="p-6 text-center flex flex-col items-center">
+            <div class="relative mb-3">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150" alt="Ricardo Gomes" class="w-20 h-20 rounded-full object-cover border-2 border-white shadow-sm" />
+              <span class="absolute bottom-1 right-1 w-3.5 h-3.5 bg-emerald-500 border-2 border-white rounded-full"></span>
+            </div>
+            <h3 class="font-bold text-gray-800 text-sm">Ricardo Gomes</h3>
+            <p class="text-xs text-gray-500 mt-0.5 mb-3">Gerente de Vendas</p>
+            <span class="bg-emerald-50 text-emerald-600 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">Ativo</span>
+          </div>
+          <div class="grid grid-cols-3 border-t border-gray-100 bg-[#FAFAFA] divide-x divide-gray-100 text-[10px] text-gray-500 font-bold uppercase tracking-wider">
+            <button class="py-3 flex flex-col items-center justify-center gap-1 hover:bg-gray-100/80 transition-colors">
+              <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"></path></svg>
+              Acessos
+            </button>
+            <button class="py-3 flex flex-col items-center justify-center gap-1 hover:bg-gray-100/80 transition-colors">
+              <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
+              Logs
+            </button>
+            <button class="py-3 flex flex-col items-center justify-center gap-1 hover:bg-gray-100/80 transition-colors">
+              <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"></path></svg>
+              Bloquear
+            </button>
+          </div>
+        </div>
+
+        <!-- Card 3: Ana Paula -->
+        <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-sm flex flex-col justify-between">
+          <div class="p-6 text-center flex flex-col items-center">
+            <div class="relative mb-3">
+              <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150" alt="Ana Paula" class="w-20 h-20 rounded-full object-cover border-2 border-white shadow-sm" />
+              <span class="absolute bottom-1 right-1 w-3.5 h-3.5 bg-rose-500 border-2 border-white rounded-full"></span>
+            </div>
+            <h3 class="font-bold text-gray-800 text-sm">Ana Paula</h3>
+            <p class="text-xs text-gray-500 mt-0.5 mb-3">Auxiliar de Estoque</p>
+            <span class="bg-gray-100 text-gray-500 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">Inativo</span>
+          </div>
+          <div class="grid grid-cols-3 border-t border-gray-100 bg-[#FAFAFA] divide-x divide-gray-100 text-[10px] text-gray-500 font-bold uppercase tracking-wider">
+            <button class="py-3 flex flex-col items-center justify-center gap-1 hover:bg-gray-100/80 transition-colors">
+              <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"></path></svg>
+              Acessos
+            </button>
+            <button class="py-3 flex flex-col items-center justify-center gap-1 hover:bg-gray-100/80 transition-colors">
+              <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
+              Logs
+            </button>
+            <button class="py-3 flex flex-col items-center justify-center gap-1 bg-[#F5ECE5] text-[#875C46] transition-colors">
+              <svg class="w-4 h-4 text-[#875C46]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path></svg>
+              Ativar
+            </button>
+          </div>
+        </div>
+
+        <!-- Card 4: Carlos Eduardo -->
+        <div class="bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-sm flex flex-col justify-between">
+          <div class="p-6 text-center flex flex-col items-center">
+            <div class="relative mb-3">
+              <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150" alt="Carlos Eduardo" class="w-20 h-20 rounded-full object-cover border-2 border-white shadow-sm" />
+              <span class="absolute bottom-1 right-1 w-3.5 h-3.5 bg-emerald-500 border-2 border-white rounded-full"></span>
+            </div>
+            <h3 class="font-bold text-gray-800 text-sm">Carlos Eduardo</h3>
+            <p class="text-xs text-gray-500 mt-0.5 mb-3">Atendente Pleno</p>
+            <span class="bg-emerald-50 text-emerald-600 text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">Ativo</span>
+          </div>
+          <div class="grid grid-cols-3 border-t border-gray-100 bg-[#FAFAFA] divide-x divide-gray-100 text-[10px] text-gray-500 font-bold uppercase tracking-wider">
+            <button class="py-3 flex flex-col items-center justify-center gap-1 hover:bg-gray-100/80 transition-colors">
+              <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"></path></svg>
+              Acessos
+            </button>
+            <button class="py-3 flex flex-col items-center justify-center gap-1 hover:bg-gray-100/80 transition-colors">
+              <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
+              Logs
+            </button>
+            <button class="py-3 flex flex-col items-center justify-center gap-1 hover:bg-gray-100/80 transition-colors">
+              <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"></path></svg>
+              Bloquear
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Atividade Recente do Sistema -->
+      <div class="bg-white rounded-2xl border border-gray-200 p-6 shadow-sm">
+        <div class="flex items-center justify-between mb-6">
+          <div class="flex items-center gap-2.5">
+            <svg class="w-5 h-5 text-[#875C46]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            <h3 class="text-sm font-bold text-[#6D4936]">Atividade Recente do Sistema</h3>
+          </div>
+          <a href="#" class="text-xs font-bold text-[#875C46] hover:underline">Ver Histórico Completo</a>
+        </div>
+
+        <div class="space-y-4">
+          <!-- Item 1 -->
+          <div class="flex items-start gap-3.5">
+            <div class="p-2.5 bg-pink-100 text-pink-600 rounded-full shrink-0 mt-0.5">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+            </div>
+            <div>
+              <p class="text-xs text-gray-700 leading-relaxed"><strong class="font-bold text-gray-900">Mariana Silva</strong> alterou as permissões de estoque.</p>
+              <p class="text-[11px] text-gray-400 mt-0.5">Há 15 minutos • IP: 192.168.1.42</p>
+            </div>
+          </div>
+
+          <!-- Item 2 -->
+          <div class="flex items-start gap-3.5">
+            <div class="p-2.5 bg-red-100 text-red-500 rounded-full shrink-0 mt-0.5">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
+            </div>
+            <div>
+              <p class="text-xs text-gray-700 leading-relaxed"><strong class="font-bold text-gray-900">Tentativa de login bloqueada</strong> para o usuário Ricardo Gomes.</p>
+              <p class="text-[11px] text-gray-400 mt-0.5">Há 2 horas • Localização: São Paulo, BR</p>
+            </div>
+          </div>
+
+          <!-- Item 3 -->
+          <div class="flex items-start gap-3.5">
+            <div class="p-2.5 bg-[#F5ECE5] text-[#875C46] rounded-full shrink-0 mt-0.5">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"></path></svg>
+            </div>
+            <div>
+              <p class="text-xs text-gray-700 leading-relaxed"><strong class="font-bold text-gray-900">Novo funcionário registrado:</strong> Carlos Eduardo.</p>
+              <p class="text-[11px] text-gray-400 mt-0.5">Ontem, 16:45 • Por: João Doceiro</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+</body>
+</html>
