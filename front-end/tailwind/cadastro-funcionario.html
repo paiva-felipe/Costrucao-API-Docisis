@@ -1,100 +1,171 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DoceGestão — Entrar</title>
-
-<!-- Fontes do Google Fonts: Fraunces (logo/títulos) e Inter (texto) -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-
-
-<link rel="stylesheet" href="css/output.css">
-
-<!--ajuste de fonte padrão do body (fora do Tailwind) -->
-<style>
-  body { font-family: 'Inter', sans-serif; }
-  .font-display { font-family: 'Fraunces', serif; }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cadastrar Novo Funcionário - DoceGestão</title>
+  <!-- Esse é o CSS gerado pelo Tailwind CLI a partir do input.css -->
+  <link rel="stylesheet" href="css/output.css" />
 </head>
-<body class="bg-cream min-h-screen flex items-center justify-center p-4">
+<body class="min-h-screen bg-cream text-cocoa-900 flex">
 
-  <!-- Cartão central: centraliza o login na tela e dá o rounded-2xl + sombra -->
-  <div class="w-full max-w-4xl bg-white rounded-2xl shadow-xl shadow-cocoa-800/5 overflow-hidden flex flex-col md:flex-row">
-
-    <!-- Painel esquerdo: imagem de fundo + frase de efeito (some no celular, some via flex-col md:flex-row) -->
-    <div class="relative md:w-[45%] min-h-[220px] md:min-h-[560px] bg-cocoa-800 flex items-end p-8"
-         style="background-image: linear-gradient(180deg, rgba(74,46,26,0.25) 0%, rgba(74,46,26,0.85) 100%), url('https://images.unsplash.com/photo-1558326567-98ae2405596b?q=80&w=800&auto=format&fit=crop'); background-size: cover; background-position: center;">
-      <div class="relative z-10 text-cream">
-        <p class="font-display italic text-xl md:text-2xl leading-snug">
-          A doçura de uma<br>gestão eficiente.
-        </p>
-        <p class="mt-3 text-sm text-cream/70">
-          Estoque, pedidos e fornecedores da sua doceria, tudo em um só lugar.
-        </p>
+  <!-- Sidebar -->
+  <aside class="w-60 shrink-0 border-r border-cocoa-100 flex flex-col justify-between py-6">
+    <div>
+      <div class="px-6 pb-6 border-b border-cocoa-100">
+        <p class="font-semibold">Confeitaria</p>
+        <p class="text-xs text-cocoa-400">Gestão Premium</p>
       </div>
+
+      <nav class="mt-6 flex flex-col gap-1 px-3">
+        <a href="#" class="flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-sm text-cocoa-400 hover:bg-cocoa-50">
+          Dashboard
+        </a>
+        <a href="#" class="flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-sm text-cocoa-400 hover:bg-cocoa-50">
+          Estoque
+        </a>
+        <a href="#" class="flex items-center gap-2.5 px-3 py-2.5 rounded-lg text-sm font-medium bg-cocoa-50 text-cocoa-500">
+          Admin
+        </a>
+      </nav>
     </div>
 
-    <!-- Painel direito: formulário de login -->
-    <div class="md:w-[55%] px-8 py-10 md:px-12 md:py-14 flex flex-col justify-center">
+    <div class="px-3">
+      <button type="button" class="w-full rounded-lg bg-cocoa-800 text-cream text-sm font-medium py-2.5 hover:bg-cocoa-900">
+        + Novo Item
+      </button>
+    </div>
+  </aside>
 
-      <!--(painel do admin) -->
-      <div class="mb-8">
-        <h1 class="font-display text-3xl text-cocoa-700">DoceGestão</h1>
-        <span class="inline-block mt-2 text-xs font-medium text-rose-500 bg-rose-100 px-2.5 py-1 rounded-full">
-          Painel do administrador
-        </span>
+  <!-- Main -->
+  <div class="flex-1 flex flex-col">
+
+    <!-- Top bar -->
+    <header class="flex items-center justify-between px-8 py-4 border-b border-cocoa-100">
+      <p class="text-lg font-semibold text-cocoa-500">DoceGestão</p>
+      <div class="flex items-center gap-6 text-sm">
+        <span class="text-cocoa-400">Dashboard</span>
+        <span class="text-cocoa-500 font-medium border-b-2 border-cocoa-500 pb-1">Funcionários</span>
       </div>
+    </header>
 
-      <h2 class="text-lg font-semibold text-cocoa-800 mb-1">Bem-vindo de volta</h2>
-      <p class="text-sm text-cocoa-400 mb-8">Entre com sua conta para continuar.</p>
+    <!-- Form -->
+    <main class="flex-1 overflow-y-auto px-8 py-10">
+      <form class="max-w-3xl mx-auto" action="#" method="POST">
 
-      <!-- Formulário: e-mail, senha (com botão mostrar/ocultar), lembrar-me / esqueci a senha, botão entrar -->
-      <form class="space-y-5">
-        <div>
-          <label for="email" class="block text-sm font-medium text-cocoa-700 mb-1.5">E-mail</label>
-          <input type="email" id="email" placeholder="seu@docegestao.com"
-            class="w-full rounded-lg border border-cocoa-200 bg-cream/40 px-4 py-2.5 text-sm text-cocoa-800 placeholder:text-cocoa-400/70 focus:outline-none focus:ring-2 focus:ring-cocoa-400 focus:border-transparent">
+        <div class="text-center mb-8">
+          <h1 class="text-2xl font-semibold">Cadastrar Novo Funcionário</h1>
+          <p class="text-sm text-cocoa-400 mt-1">Preencha as informações para criar um novo acesso ao sistema.</p>
         </div>
 
-        <div>
-          <label for="senha" class="block text-sm font-medium text-cocoa-700 mb-1.5">Senha</label>
-          <div class="relative">
-            <input type="password" id="senha" placeholder="••••••••"
-              class="w-full rounded-lg border border-cocoa-200 bg-cream/40 px-4 py-2.5 text-sm text-cocoa-800 placeholder:text-cocoa-400/70 focus:outline-none focus:ring-2 focus:ring-cocoa-400 focus:border-transparent">
-            <!-- Alterna o type do input entre password/text pra mostrar ou ocultar a senha -->
-            <button type="button" onclick="const i=document.getElementById('senha'); i.type = i.type==='password' ? 'text' : 'password';"
-              class="absolute right-3 top-1/2 -translate-y-1/2 text-cocoa-400 hover:text-cocoa-600 text-xs">
-              mostrar
-            </button>
+        <div class="grid grid-cols-1 md:grid-cols-[220px_1fr] gap-5 mb-5">
+
+          <!-- Foto -->
+          <div class="rounded-xl border border-cocoa-100 bg-white p-6 flex flex-col items-center justify-center text-center py-8">
+            <div id="preview-foto" class="w-20 h-20 rounded-full bg-blush-200 flex items-center justify-center mb-3 overflow-hidden bg-cover bg-center">
+              <span class="text-blush-500">📷</span>
+            </div>
+            <p class="text-xs font-medium">UPLOAD DE FOTO</p>
+            <p class="text-[11px] text-cocoa-400 mt-1 px-4">Formatos JPG, PNG. Máx 2MB.</p>
+            <input id="input-foto" type="file" name="foto" accept="image/png, image/jpeg" class="mt-3 text-xs" />
+          </div>
+
+          <!-- Dados pessoais -->
+          <div class="rounded-xl border border-cocoa-100 bg-white p-6">
+            <p class="text-sm font-semibold mb-5">Dados Pessoais</p>
+
+            <label class="block">
+              <span class="block text-xs font-medium mb-1.5">Nome completo</span>
+              <input type="text" name="nome_completo" placeholder="Ex: Maria Oliveira"
+                class="w-full rounded-lg border border-cocoa-100 bg-cream px-3.5 py-2.5 text-sm placeholder:text-cocoa-300 focus:outline-none focus:ring-2 focus:ring-cocoa-500/30" />
+            </label>
+
+            <div class="grid grid-cols-2 gap-4 mt-4">
+              <label class="block">
+                <span class="block text-xs font-medium mb-1.5">CPF</span>
+                <input type="text" name="cpf" placeholder="000.000.000-00"
+                  class="w-full rounded-lg border border-cocoa-100 bg-cream px-3.5 py-2.5 text-sm placeholder:text-cocoa-300 focus:outline-none focus:ring-2 focus:ring-cocoa-500/30" />
+              </label>
+              <label class="block">
+                <span class="block text-xs font-medium mb-1.5">Idade</span>
+                <input type="number" name="idade" placeholder="25"
+                  class="w-full rounded-lg border border-cocoa-100 bg-cream px-3.5 py-2.5 text-sm placeholder:text-cocoa-300 focus:outline-none focus:ring-2 focus:ring-cocoa-500/30" />
+              </label>
+            </div>
           </div>
         </div>
 
-        <div class="flex items-center justify-between text-sm">
-          <label class="flex items-center gap-2 text-cocoa-600">
-            <input type="checkbox" class="rounded border-cocoa-200 text-cocoa-600 focus:ring-cocoa-400">
-            Lembrar de mim
-          </label>
-          <a href="#" class="text-cocoa-600 hover:text-cocoa-800 font-medium">Esqueceu a senha?</a>
+        <!-- Nível de acesso -->
+        <div class="rounded-xl border border-cocoa-100 bg-white p-6 mb-5">
+          <p class="text-sm font-semibold mb-5">Nível de Acesso</p>
+          <div class="grid grid-cols-2 gap-4">
+
+            <label id="opcao-administrador" class="nivel-acesso-opcao flex items-start gap-3 rounded-xl border border-cocoa-300 bg-cocoa-50 p-4 cursor-pointer">
+              <input type="radio" name="nivel_acesso" value="administrador" checked class="mt-1" />
+              <div>
+                <p class="text-sm font-medium">Administrador</p>
+                <p class="text-xs text-cocoa-400 mt-1">Acesso total ao sistema, relatórios financeiros e gestão de usuários.</p>
+              </div>
+            </label>
+
+            <label id="opcao-funcionario" class="nivel-acesso-opcao flex items-start gap-3 rounded-xl border border-cocoa-100 bg-white p-4 cursor-pointer">
+              <input type="radio" name="nivel_acesso" value="funcionario" class="mt-1" />
+              <div>
+                <p class="text-sm font-medium">Funcionário</p>
+                <p class="text-xs text-cocoa-400 mt-1">Acesso operacional: controle de estoque, entradas e saídas diárias.</p>
+              </div>
+            </label>
+
+          </div>
         </div>
 
-        <button type="submit"
-          class="w-full bg-cocoa-700 hover:bg-cocoa-800 transition-colors text-white text-sm font-medium py-3 rounded-lg shadow-sm">
-          Entrar
-        </button>
+        <!-- Contato -->
+        <div class="rounded-xl border border-cocoa-100 bg-white p-6 mb-5">
+          <p class="text-sm font-semibold mb-5">Contato</p>
+          <div class="grid grid-cols-2 gap-4">
+            <label class="block">
+              <span class="block text-xs font-medium mb-1.5">Email</span>
+              <input type="email" name="email" placeholder="maria@confeitaria.com"
+                class="w-full rounded-lg border border-cocoa-100 bg-cream px-3.5 py-2.5 text-sm placeholder:text-cocoa-300 focus:outline-none focus:ring-2 focus:ring-cocoa-500/30" />
+            </label>
+            <label class="block">
+              <span class="block text-xs font-medium mb-1.5">Telefone</span>
+              <input type="text" name="telefone" placeholder="(00) 00000-0000"
+                class="w-full rounded-lg border border-cocoa-100 bg-cream px-3.5 py-2.5 text-sm placeholder:text-cocoa-300 focus:outline-none focus:ring-2 focus:ring-cocoa-500/30" />
+            </label>
+          </div>
+        </div>
+
+        <!-- Segurança -->
+        <div class="rounded-xl border border-cocoa-100 bg-white p-6 mb-8">
+          <p class="text-sm font-semibold mb-5">Segurança</p>
+          <div class="grid grid-cols-2 gap-4">
+            <label class="block">
+              <span class="block text-xs font-medium mb-1.5">Senha</span>
+              <input type="password" name="senha" placeholder="••••••••"
+                class="w-full rounded-lg border border-cocoa-100 bg-cream px-3.5 py-2.5 text-sm placeholder:text-cocoa-300 focus:outline-none focus:ring-2 focus:ring-cocoa-500/30" />
+            </label>
+            <label class="block">
+              <span class="block text-xs font-medium mb-1.5">Confirmar senha</span>
+              <input type="password" name="confirmar_senha" placeholder="••••••••"
+                class="w-full rounded-lg border border-cocoa-100 bg-cream px-3.5 py-2.5 text-sm placeholder:text-cocoa-300 focus:outline-none focus:ring-2 focus:ring-cocoa-500/30" />
+            </label>
+          </div>
+        </div>
+
+        <div class="flex justify-end gap-3">
+          <button type="button" class="px-5 py-2.5 rounded-lg text-sm font-medium bg-blush-200 text-blush-800 hover:bg-blush-300">
+            Cancelar
+          </button>
+          <button type="submit" class="px-5 py-2.5 rounded-lg text-sm font-medium bg-cocoa-500 text-white hover:bg-cocoa-600">
+            Criar Conta
+          </button>
+        </div>
+
       </form>
-
-      <!-- Rodapé do card -->
-      <div class="mt-8 pt-6 border-t border-cocoa-200/60 text-center">
-        <p class="text-sm text-cocoa-400">
-          Não tem uma conta?
-          <a href="#" class="text-cocoa-700 font-medium hover:underline">Fale com o administrador</a>
-        </p>
-      </div>
-
-    </div>
+    </main>
   </div>
 
+  <script src="script.js"></script>
 </body>
 </html>
