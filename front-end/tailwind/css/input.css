@@ -1,0 +1,16 @@
+@import "tailwindcss";
+@source "../index.html";
+
+@theme {
+  --color-cocoa-700: #5C3A21;
+  --color-cocoa-800: #4A2E1A;
+  --color-cocoa-600: #7A4E2E;
+  --color-cocoa-400: #A9764F;
+  --color-cocoa-200: #E3CBB0;
+  --color-rose-500: #E27FA6;
+  --color-rose-300: #F0B8CE;
+  --color-rose-100: #FBE4EC;
+  --color-cream: #FBF6EF;
+  --font-display: 'Fraunces', serif;
+}
+
