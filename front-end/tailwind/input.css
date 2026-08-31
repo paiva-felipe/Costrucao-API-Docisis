@@ -1,5 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @import "tailwindcss";
-@source "../index.html"
+@source "../index.html";
 @theme {
 
   --color-cocoa-700: #5C3A21;
