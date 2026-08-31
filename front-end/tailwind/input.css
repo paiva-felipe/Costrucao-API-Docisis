@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@source "../index.html",
+
 @theme {
   --color-cocoa-700: #5C3A21;
   --color-cocoa-800: #4A2E1A;
