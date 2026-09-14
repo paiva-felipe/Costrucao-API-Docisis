@@ -1,80 +1,102 @@
 <!-- sidebar.html -->
 <aside
-    class="flex h-screen w-64 shrink-0 flex-col justify-between border-r border-stone-200 bg-white px-4 py-6 sticky top-0">
-    <div>
-        <!-- Logo -->
-        <div class="mb-8 flex items-center gap-2 px-2">
-            <i data-lucide="cookie" class="h-6 w-6 text-amber-800"></i>
-            <span class="text-lg font-semibold text-stone-800">DoceGestão</span>
-        </div>
+    class="w-64 h-screen bg-[#f8f5f0] rounded-r-3xl p-6 flex flex-col justify-between shrink-0 shadow-sm border-r border-black/5 sticky top-0">
 
-        <!-- Subtítulo -->
-        <div class="mb-6 px-2">
-            <p class="text-sm font-semibold text-stone-800">Confeitaria</p>
-            <p class="text-xs text-stone-400">Gestão Premium</p>
+    <!-- TOPO: Logo e Menu -->
+    <div class="space-y-6">
+
+        <!-- Logo e Título -->
+        <div class="flex items-center gap-3 px-1">
+            <div>
+                <h1 class="font-serif font-bold text-lg text-[#3d2a1d] leading-tight">DoceGestão</h1>
+                <p class="text-[10px] text-[#9c8a79] uppercase tracking-widest font-bold">Confeitaria</p>
+            </div>
         </div>
 
         <!-- Navegação Principal -->
-        <nav class="flex flex-col gap-1">
+        <nav class="space-y-1.5 text-sm font-medium">
+
+            <!-- Dashboard -->
             <a href="index.html" data-page="dashboard"
-                class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm text-stone-500 hover:bg-stone-50 hover:text-stone-700 transition">
-                <i data-lucide="layout-grid" class="h-4 w-4"></i> Dashboard
+                class="flex items-center gap-3 px-4 py-3 rounded-2xl text-[#8a7868] hover:bg-[#eae0d2]/50 hover:text-[#3d2a1d] transition-all">
+                <i data-lucide="layout-grid" class="w-5 h-5 opacity-80"></i>
+                <span>Dashboard / Login</span>
             </a>
 
+            <!-- Estoque -->
             <a href="materia_prima.html" data-page="estoque"
-                class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm text-stone-500 hover:bg-stone-50 hover:text-stone-700 transition">
-                <i data-lucide="package" class="h-4 w-4"></i> Estoque
+                class="flex items-center gap-3 px-4 py-3 rounded-2xl text-[#8a7868] hover:bg-[#eae0d2]/50 hover:text-[#3d2a1d] transition-all">
+                <i data-lucide="package" class="w-5 h-5 opacity-80"></i>
+                <span>Estoque</span>
             </a>
 
+            <!-- Entrada -->
             <a href="entrada.html" data-page="entrada"
-                class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm text-stone-500 hover:bg-stone-50 hover:text-stone-700 transition">
-                <i data-lucide="arrow-down-to-line" class="h-4 w-4"></i> Entrada
+                class="flex items-center gap-3 px-4 py-3 rounded-2xl text-[#8a7868] hover:bg-[#eae0d2]/50 hover:text-[#3d2a1d] transition-all">
+                <i data-lucide="log-in" class="w-5 h-5 opacity-80"></i>
+                <span>Entrada</span>
             </a>
 
+            <!-- Saída -->
             <a href="saida.html" data-page="saida"
-                class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm text-stone-500 hover:bg-stone-50 hover:text-stone-700 transition">
-                <i data-lucide="arrow-up-from-line" class="h-4 w-4"></i> Saída
+                class="flex items-center gap-3 px-4 py-3 rounded-2xl text-[#8a7868] hover:bg-[#eae0d2]/50 hover:text-[#3d2a1d] transition-all">
+                <i data-lucide="log-out" class="w-5 h-5 opacity-80"></i>
+                <span>Saída</span>
             </a>
 
+            <!-- Alertas -->
             <a href="alertas.html" data-page="alertas"
-                class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm text-stone-500 hover:bg-stone-50 hover:text-stone-700 transition">
-                <i data-lucide="bell" class="h-4 w-4"></i> Alertas
+                class="flex items-center gap-3 px-4 py-3 rounded-2xl text-[#8a7868] hover:bg-[#eae0d2]/50 hover:text-[#3d2a1d] transition-all">
+                <i data-lucide="bell" class="w-5 h-5 opacity-80"></i>
+                <span>Alertas</span>
             </a>
 
-            <!-- MENU HISTÓRICO COM SUBMENU -->
+            <!-- MENU HISTÓRICO (Accordion) -->
             <div>
                 <button type="button" id="btn-historico" data-page="historico"
-                    class="flex w-full items-center justify-between rounded-lg px-3 py-2.5 text-sm text-stone-500 hover:bg-stone-50 hover:text-stone-700 transition">
+                    class="flex w-full items-center justify-between px-4 py-3 rounded-2xl text-[#8a7868] hover:bg-[#eae0d2]/50 hover:text-[#3d2a1d] transition-all cursor-pointer">
                     <div class="flex items-center gap-3">
-                        <i data-lucide="history" class="h-4 w-4"></i>
+                        <i data-lucide="history" class="w-5 h-5 opacity-80"></i>
                         <span>Histórico</span>
                     </div>
                     <i data-lucide="chevron-down" id="seta-historico"
-                        class="h-4 w-4 transition-transform duration-200"></i>
+                        class="w-4 h-4 opacity-70 transition-transform duration-200"></i>
                 </button>
 
-                <!-- SUBMENU ESCONDIDO -->
-                <div id="submenu-historico" class="pl-9 pt-1 space-y-1" style="display: none;">
+                <!-- SUBMENU (Escondido por padrão via JS) -->
+                <div id="submenu-historico" class="pl-11 pr-2 pt-1 space-y-1" style="display: none;">
                     <a href="historico_movimentacoes.html" data-page="historico-movimentacoes"
-                        class="block rounded-md px-3 py-2 text-xs text-stone-500 hover:bg-stone-50 hover:text-stone-700 transition">
+                        class="block px-3 py-2 rounded-xl text-xs font-medium text-[#8a7868] hover:bg-[#eae0d2]/50 hover:text-[#3d2a1d] transition-all">
                         Movimentações
                     </a>
                     <a href="historico_materia_prima.html" data-page="historico-materia-prima"
-                        class="block rounded-md px-3 py-2 text-xs text-stone-500 hover:bg-stone-50 hover:text-stone-700 transition">
-                        Materia prima
+                        class="block px-3 py-2 rounded-xl text-xs font-medium text-[#8a7868] hover:bg-[#eae0d2]/50 hover:text-[#3d2a1d] transition-all">
+                        Matéria Prima
                     </a>
                 </div>
             </div>
 
-            <a href="admin.html" data-page="admin"
-                class="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm text-stone-500 hover:bg-stone-50 hover:text-stone-700 transition">
-                <i data-lucide="shield-check" class="h-4 w-4"></i> Admin
+            <!-- Admin -->
+            <a href="saida.html" data-page="saida"
+                class="flex items-center gap-3 px-4 py-3 rounded-2xl text-[#8a7868] hover:bg-[#eae0d2]/50 hover:text-[#3d2a1d] transition-all">
+                <i data-lucide="log-out" class="w-5 h-5 opacity-80"></i>
+                <span>Admin</span>
             </a>
         </nav>
     </div>
 
-    <button type="button"
-        class="flex items-center justify-center gap-2 rounded-lg bg-amber-900 px-4 py-2.5 text-sm font-medium text-white hover:bg-amber-950 transition">
-        <i data-lucide="plus" class="h-4 w-4"></i> Novo Item
-    </button>
+    <!-- RODAPÉ: Botão de Ação e Sair -->
+    <div class="space-y-3 pt-4 border-t border-[#e8ded2]">
+        <button type="button" id="btn-novo-sidebar"
+            class="w-full bg-[#9d6031] hover:bg-[#865026] text-white text-sm font-bold py-3.5 rounded-2xl flex items-center justify-center gap-2 transition-all shadow-sm cursor-pointer">
+            <span class="text-lg font-light leading-none">+</span>
+            <span>Adicionar</span>
+        </button>
+
+        <a href="login.html"
+            class="flex items-center gap-3 px-4 py-2.5 text-sm font-medium text-[#8a7868] hover:text-rose-600 hover:bg-rose-50/50 rounded-2xl transition-all">
+            <i data-lucide="log-out" class="w-5 h-5 opacity-80"></i>
+            <span>Sair</span>
+        </a>
+    </div>
 </aside>
