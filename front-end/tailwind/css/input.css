@@ -1,10 +1,6 @@
 @import "tailwindcss";
-<<<<<<< HEAD
 
 @source "../*.html";
-=======
-@source "../index.html";
->>>>>>> 9196b77d03973b7e883954d4e43f6ce5a8e6833d
 @theme {
   --color-cocoa-700: #5C3A21;
   --color-cocoa-800: #4A2E1A;

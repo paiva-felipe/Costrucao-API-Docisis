@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Dependências (a pasta mais pesada)
 node_modules/
 
@@ -13,6 +12,3 @@ build/
 .DS_Store
 Thumbs.db
 *.log
-=======
-node_modules
->>>>>>> 9196b77d03973b7e883954d4e43f6ce5a8e6833d
