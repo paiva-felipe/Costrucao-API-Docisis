@@ -142,5 +142,17 @@
     </div>
   </div>
 
+  <!--
+    Redirecionamento automático: depois que a splash screen aparece por um tempinho
+    (2500 milissegundos = 2,5 segundos), o navegador troca sozinho pra tela de Estoque.
+    Se quiser trocar pra qual página vai depois, é só mudar o 'estoque.html' aqui.
+  -->
+  <script>
+    setTimeout(() => {
+      // Altere de 'estoque.html' para o nome correto do arquivo
+      window.location.href = 'estoqueInsumo.html';
+    }, 2500);
+  </script>
+
 </body>
 </html>

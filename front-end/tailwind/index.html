@@ -9,10 +9,17 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
-
+<!--
+  CSS do Tailwind já compilado pelo CLI (npm run build:css).
+  Ele é gerado a partir de public/css/input.css, que tem:
+    @import "tailwindcss";
+    @theme { ...cores e fontes customizadas (cocoa, rose, cream, font-display)... }
+  Não usamos mais o <script src="https://cdn.tailwindcss.com">
+  porque agora o Tailwind roda via npm/CLI, não via CDN.
+-->
 <link rel="stylesheet" href="css/output.css">
 
-<!--ajuste de fonte padrão do body (fora do Tailwind) -->
+<!-- Pequeno ajuste de fonte padrão do body (fora do Tailwind) -->
 <style>
   body { font-family: 'Inter', sans-serif; }
   .font-display { font-family: 'Fraunces', serif; }
@@ -39,7 +46,7 @@
     <!-- Painel direito: formulário de login -->
     <div class="md:w-[55%] px-8 py-10 md:px-12 md:py-14 flex flex-col justify-center">
 
-      <!--(painel do admin) -->
+      <!-- Marca "DoceGestão" + selinho de contexto (painel do admin) -->
       <div class="mb-8">
         <h1 class="font-display text-3xl text-cocoa-700">DoceGestão</h1>
         <span class="inline-block mt-2 text-xs font-medium text-rose-500 bg-rose-100 px-2.5 py-1 rounded-full">
@@ -50,8 +57,13 @@
       <h2 class="text-lg font-semibold text-cocoa-800 mb-1">Bem-vindo de volta</h2>
       <p class="text-sm text-cocoa-400 mb-8">Entre com sua conta para continuar.</p>
 
-      <!-- Formulário: e-mail, senha (com botão mostrar/ocultar), lembrar-me / esqueci a senha, botão entrar -->
-      <form class="space-y-5">
+      <!--
+        Formulário: e-mail, senha (com botão mostrar/ocultar), lembrar-me / esqueci a senha, botão entrar.
+        onsubmit="...; return false;" impede o comportamento padrão de recarregar a página (que apagaria os campos
+        e não levaria a lugar nenhum, já que não temos um backend de autenticação real aqui) e, no lugar disso,
+        manda o navegador pra splash.html — a próxima tela do fluxo.
+      -->
+      <form class="space-y-5" onsubmit="window.location.href = 'splash.html'; return false;">
         <div>
           <label for="email" class="block text-sm font-medium text-cocoa-700 mb-1.5">E-mail</label>
           <input type="email" id="email" placeholder="seu@docegestao.com"
