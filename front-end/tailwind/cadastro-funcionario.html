@@ -5,24 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cadastrar Novo Funcionário - DoceGestão</title>
   
-  <!-- CDN do Tailwind CSS: carrega os estilos direto da nuvem sem precisar compilar localmente -->
+  <!-- CDN do Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<!-- 
-  BODY LAYOUT:
-  - min-h-screen: garante que a página ocupe no mínimo 100% da altura da tela.
-  - bg-[#FAF8F5]: fundo bege/creme suave do tema da confeitaria.
-  - flex: coloca a Sidebar e o Conteúdo Principal lado a lado na horizontal.
--->
 <body class="min-h-screen bg-[#FAF8F5] text-[#4A3F39] flex font-sans antialiased">
 
-  <!-- ==========================================
-       SIDEBAR (MENU LATERAL)
-       - w-64: largura fixa de 256px.
-       - shrink-0: impede a barra lateral de encolher se a tela diminuir.
-       - sticky top-0 h-screen: fixa o menu na lateral enquanto o conteúdo da direita rola.
-  =========================================== -->
+  <!-- SIDEBAR (MENU LATERAL) -->
   <aside class="w-64 shrink-0 bg-[#F5F3EF] border-r border-gray-200 flex flex-col justify-between h-screen sticky top-0">
     <div>
       <!-- Logo do Sistema -->
@@ -63,7 +52,6 @@
           Histórico
         </a>
         
-        <!-- Item Ativo / Selecionado no Menu -->
         <a href="cadastro-funcionario.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-semibold bg-[#875C46] text-white shadow-sm transition-all">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
           Funcionários
@@ -76,47 +64,33 @@
       </nav>
     </div>
 
-    <!-- Botão de Ação Rápida no rodapé da Sidebar -->
-    <!-- active:scale-[0.98]: simula o afundamento do botão físico ao clicar -->
+    <!-- Botão de Ação Rápida -->
     <div class="p-4">
-      <button type="button" class="w-full rounded-xl bg-[#875C46] text-white text-sm font-medium py-3 hover:bg-[#6D4936] transition-all shadow-sm active:scale-[0.98] flex items-center justify-center gap-2">
+      <button type="button" id="btn-novo-item" class="w-full rounded-xl bg-[#875C46] text-white text-sm font-medium py-3 hover:bg-[#6D4936] transition-all shadow-sm active:scale-[0.98] flex items-center justify-center gap-2">
         <span class="text-base font-bold">+</span> Novo Item
       </button>
     </div>
   </aside>
 
-  <!-- ==========================================
-       ÁREA PRINCIPAL DA DIREITA (HEADER + FORM)
-       - flex-1: ocupa todo o espaço horizontal restante.
-       - h-screen overflow-hidden: fixa a altura na viewport e evita barras de rolagem duplas.
-  =========================================== -->
+  <!-- ÁREA PRINCIPAL -->
   <div class="flex-1 flex flex-col h-screen overflow-hidden">
 
     <!-- Header do Topo -->
     <header class="h-16 flex items-center justify-between px-8 bg-white border-b border-gray-200 shrink-0">
-      
-      <!-- Breadcrumb (Trilha de Navegação) -->
       <div class="flex items-center gap-2 text-sm">
         <a href="index.html" class="text-gray-400 hover:text-[#875C46] transition-colors">Dashboard</a>
         <span class="text-gray-300">/</span>
         <span class="text-[#875C46] font-semibold">Cadastrar Funcionário</span>
       </div>
       
-      <!-- Ícones e Usuário -->
       <div class="flex items-center gap-4 text-gray-500">
-        <button class="p-2 rounded-lg hover:bg-gray-100 hover:text-[#875C46] transition-all">
+        <button type="button" class="p-2 rounded-lg hover:bg-gray-100 hover:text-[#875C46] transition-all" onclick="alert('Sem novas notificações no momento.')">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
         </button>
-        <button class="p-2 rounded-lg hover:bg-gray-100 hover:text-[#875C46] transition-all">
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-        </button>
         
-        <!-- Divisor vertical discreto -->
         <div class="h-5 w-[1px] bg-gray-200"></div>
         
-        <!-- Avatar com Inicial do Nome ("A" de Admin) -->
         <div class="flex items-center gap-3 cursor-pointer">
-          <!-- Círculo estilizado contendo apenas a inicial -->
           <div class="w-9 h-9 rounded-full bg-[#875C46] text-white font-bold text-sm flex items-center justify-center shadow-sm">
             A
           </div>
@@ -125,15 +99,14 @@
             <p class="text-[10px] text-gray-400 mt-0.5">Gestor</p>
           </div>
         </div>
-
       </div>
     </header>
 
-    <!-- Main Scrollável: overflow-y-auto garante que apenas o formulário role quando for longo -->
+    <!-- Main Scrollável -->
     <main class="flex-1 overflow-y-auto p-6 md:p-10">
-      <form class="max-w-4xl mx-auto space-y-6" action="#" method="POST">
+      <form id="form-cadastro" class="max-w-4xl mx-auto space-y-6">
 
-        <!-- Banner Superior do Formulário -->
+        <!-- Banner Superior -->
         <div class="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           <div>
             <h2 class="text-2xl font-bold text-[#6D4936]">Cadastrar Novo Funcionário</h2>
@@ -145,35 +118,27 @@
           </span>
         </div>
 
-        <!-- Seção 1: Grid com Upload de Foto (4 colunas) + Dados Pessoais (8 colunas) -->
+        <!-- Seção 1: Upload de Foto + Dados Pessoais -->
         <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
-          
-          <!-- Card de Upload da Foto -->
           <div class="md:col-span-4 rounded-2xl border border-gray-200 bg-white p-6 flex flex-col items-center justify-center text-center shadow-sm">
             
-            <!-- 
-              TRUQUE DO UPLOAD CUSTOMIZADO:
-              1. A div pai tem classe "relative" e "group".
-              2. O <input type="file"> tem "opacity-0 absolute inset-0 cursor-pointer w-full h-full".
-              Isso torna o input nativo invisível por cima do círculo bonito.
-              3. "group-hover:scale-110" no ícone ativa animação de zoom quando passa o mouse na div.
-            -->
-            <div class="relative flex flex-col items-center justify-center w-28 h-28 rounded-full border-2 border-dashed border-[#875C46]/40 bg-[#FAF8F5] hover:border-[#875C46] hover:bg-[#F5F3EF] transition-all cursor-pointer mb-3 group">
-              <svg class="w-7 h-7 text-[#875C46] group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path>
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path>
-              </svg>
-              <span class="text-[11px] font-semibold text-[#875C46] mt-1">Enviar Foto</span>
-              
-              <!-- Input real escondido -->
-              <input type="file" class="absolute inset-0 opacity-0 cursor-pointer w-full h-full" accept="image/*" />
+            <div id="photo-dropzone" class="relative flex flex-col items-center justify-center w-28 h-28 rounded-full border-2 border-dashed border-[#875C46]/40 bg-[#FAF8F5] hover:border-[#875C46] hover:bg-[#F5F3EF] transition-all cursor-pointer mb-3 group overflow-hidden">
+              <div id="upload-placeholder" class="flex flex-col items-center justify-center">
+                <svg class="w-7 h-7 text-[#875C46] group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                </svg>
+                <span class="text-[11px] font-semibold text-[#875C46] mt-1">Enviar Foto</span>
+              </div>
+              <img id="photo-preview" class="hidden absolute inset-0 w-full h-full object-cover rounded-full" alt="Preview da Foto" />
+              <input type="file" id="input-foto" class="absolute inset-0 opacity-0 cursor-pointer w-full h-full" accept="image/*" />
             </div>
             
             <p class="text-xs font-bold text-[#875C46] tracking-wide uppercase mb-1">UPLOAD DE FOTO</p>
             <p class="text-[11px] text-gray-400">JPG ou PNG até 2MB</p>
           </div>
 
-          <!-- Campos: Dados Pessoais -->
+          <!-- Dados Pessoais -->
           <div class="md:col-span-8 rounded-2xl border border-gray-200 bg-white p-6 shadow-sm flex flex-col justify-between">
             <div class="flex items-center gap-2.5 mb-4 pb-3 border-b border-gray-100">
               <div class="p-2 rounded-lg bg-[#875C46]/10 text-[#875C46]">
@@ -185,25 +150,24 @@
             <div class="space-y-4">
               <div>
                 <label class="block text-xs font-semibold text-gray-700 mb-1.5">Nome completo</label>
-                <!-- focus:ring-2 e focus:border-[#875C46]: brilho suave ao focar no campo -->
-                <input type="text" placeholder="Ex: Maria Oliveira" class="w-full rounded-xl border border-gray-200 bg-gray-50/50 px-4 py-2.5 text-sm placeholder:text-gray-400 focus:bg-white focus:outline-none focus:border-[#875C46] focus:ring-2 focus:ring-[#875C46]/20 transition-all" />
+                <input type="text" id="input-nome" required placeholder="Ex: Maria Oliveira" class="w-full rounded-xl border border-gray-200 bg-gray-50/50 px-4 py-2.5 text-sm placeholder:text-gray-400 focus:bg-white focus:outline-none focus:border-[#875C46] focus:ring-2 focus:ring-[#875C46]/20 transition-all" />
               </div>
 
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label class="block text-xs font-semibold text-gray-700 mb-1.5">CPF</label>
-                  <input type="text" placeholder="000.000.000-00" class="w-full rounded-xl border border-gray-200 bg-gray-50/50 px-4 py-2.5 text-sm placeholder:text-gray-400 focus:bg-white focus:outline-none focus:border-[#875C46] focus:ring-2 focus:ring-[#875C46]/20 transition-all" />
+                  <input type="text" id="input-cpf" required placeholder="000.000.000-00" class="w-full rounded-xl border border-gray-200 bg-gray-50/50 px-4 py-2.5 text-sm placeholder:text-gray-400 focus:bg-white focus:outline-none focus:border-[#875C46] focus:ring-2 focus:ring-[#875C46]/20 transition-all" />
                 </div>
                 <div>
                   <label class="block text-xs font-semibold text-gray-700 mb-1.5">Idade</label>
-                  <input type="number" placeholder="25" class="w-full rounded-xl border border-gray-200 bg-gray-50/50 px-4 py-2.5 text-sm placeholder:text-gray-400 focus:bg-white focus:outline-none focus:border-[#875C46] focus:ring-2 focus:ring-[#875C46]/20 transition-all" />
+                  <input type="number" id="input-idade" placeholder="25" class="w-full rounded-xl border border-gray-200 bg-gray-50/50 px-4 py-2.5 text-sm placeholder:text-gray-400 focus:bg-white focus:outline-none focus:border-[#875C46] focus:ring-2 focus:ring-[#875C46]/20 transition-all" />
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Seção 2: Seleção Visual de Nível de Acesso -->
+        <!-- Seção 2: Nível de Acesso -->
         <div class="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
           <div class="flex items-center gap-2.5 mb-4 pb-3 border-b border-gray-100">
             <div class="p-2 rounded-lg bg-[#875C46]/10 text-[#875C46]">
@@ -213,9 +177,7 @@
           </div>
           
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            
-            <!-- Opção 1: Card Radio Selecionado -->
-            <label class="relative flex items-start p-4 rounded-xl border-2 border-[#875C46] bg-[#FDFBF7] cursor-pointer transition-all">
+            <label id="card-admin" class="relative flex items-start p-4 rounded-xl border-2 border-[#875C46] bg-[#FDFBF7] cursor-pointer transition-all">
               <div class="p-2.5 rounded-lg bg-[#875C46]/10 text-[#875C46] mr-3.5 shrink-0">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
               </div>
@@ -223,12 +185,10 @@
                 <p class="text-sm font-bold text-[#4A3F39]">Administrador</p>
                 <p class="text-xs text-gray-500 mt-1 leading-relaxed">Acesso total ao sistema, relatórios financeiros e gestão completa de usuários.</p>
               </div>
-              <!-- accent-[#875C46]: altera a cor da bolinha nativa do radio -->
               <input type="radio" name="nivel_acesso" value="administrador" checked class="mt-1 w-4 h-4 accent-[#875C46]" />
             </label>
 
-            <!-- Opção 2: Card Radio Não Selecionado -->
-            <label class="relative flex items-start p-4 rounded-xl border border-gray-200 bg-white hover:border-[#875C46]/50 cursor-pointer transition-all">
+            <label id="card-func" class="relative flex items-start p-4 rounded-xl border border-gray-200 bg-white hover:border-[#875C46]/50 cursor-pointer transition-all">
               <div class="p-2.5 rounded-lg bg-gray-100 text-gray-600 mr-3.5 shrink-0">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path></svg>
               </div>
@@ -241,10 +201,8 @@
           </div>
         </div>
 
-        <!-- Seção 3: Contato e Segurança dispostos lado a lado no desktop -->
+        <!-- Seção 3: Contato e Segurança -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          
-          <!-- Bloco Contato -->
           <div class="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
             <div class="flex items-center gap-2.5 mb-4 pb-3 border-b border-gray-100">
               <div class="p-2 rounded-lg bg-[#875C46]/10 text-[#875C46]">
@@ -256,16 +214,15 @@
             <div class="space-y-4">
               <div>
                 <label class="block text-xs font-semibold text-gray-700 mb-1.5">E-mail</label>
-                <input type="email" placeholder="maria@confeitaria.com" class="w-full rounded-xl border border-gray-200 bg-gray-50/50 px-4 py-2.5 text-sm placeholder:text-gray-400 focus:bg-white focus:outline-none focus:border-[#875C46] focus:ring-2 focus:ring-[#875C46]/20 transition-all" />
+                <input type="email" id="input-email" required placeholder="maria@confeitaria.com" class="w-full rounded-xl border border-gray-200 bg-gray-50/50 px-4 py-2.5 text-sm placeholder:text-gray-400 focus:bg-white focus:outline-none focus:border-[#875C46] focus:ring-2 focus:ring-[#875C46]/20 transition-all" />
               </div>
               <div>
                 <label class="block text-xs font-semibold text-gray-700 mb-1.5">Telefone</label>
-                <input type="text" placeholder="(00) 00000-0000" class="w-full rounded-xl border border-gray-200 bg-gray-50/50 px-4 py-2.5 text-sm placeholder:text-gray-400 focus:bg-white focus:outline-none focus:border-[#875C46] focus:ring-2 focus:ring-[#875C46]/20 transition-all" />
+                <input type="text" id="input-telefone" placeholder="(00) 00000-0000" class="w-full rounded-xl border border-gray-200 bg-gray-50/50 px-4 py-2.5 text-sm placeholder:text-gray-400 focus:bg-white focus:outline-none focus:border-[#875C46] focus:ring-2 focus:ring-[#875C46]/20 transition-all" />
               </div>
             </div>
           </div>
 
-          <!-- Bloco Segurança -->
           <div class="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm">
             <div class="flex items-center gap-2.5 mb-4 pb-3 border-b border-gray-100">
               <div class="p-2 rounded-lg bg-[#875C46]/10 text-[#875C46]">
@@ -277,19 +234,19 @@
             <div class="space-y-4">
               <div>
                 <label class="block text-xs font-semibold text-gray-700 mb-1.5">Senha</label>
-                <input type="password" placeholder="••••••••" class="w-full rounded-xl border border-gray-200 bg-gray-50/50 px-4 py-2.5 text-sm placeholder:text-gray-400 focus:bg-white focus:outline-none focus:border-[#875C46] focus:ring-2 focus:ring-[#875C46]/20 transition-all" />
+                <input type="password" id="input-senha" required placeholder="••••••••" class="w-full rounded-xl border border-gray-200 bg-gray-50/50 px-4 py-2.5 text-sm placeholder:text-gray-400 focus:bg-white focus:outline-none focus:border-[#875C46] focus:ring-2 focus:ring-[#875C46]/20 transition-all" />
               </div>
               <div>
                 <label class="block text-xs font-semibold text-gray-700 mb-1.5">Confirmar senha</label>
-                <input type="password" placeholder="••••••••" class="w-full rounded-xl border border-gray-200 bg-gray-50/50 px-4 py-2.5 text-sm placeholder:text-gray-400 focus:bg-white focus:outline-none focus:border-[#875C46] focus:ring-2 focus:ring-[#875C46]/20 transition-all" />
+                <input type="password" id="input-confirma-senha" required placeholder="••••••••" class="w-full rounded-xl border border-gray-200 bg-gray-50/50 px-4 py-2.5 text-sm placeholder:text-gray-400 focus:bg-white focus:outline-none focus:border-[#875C46] focus:ring-2 focus:ring-[#875C46]/20 transition-all" />
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Botões de Ação do Formulário -->
+        <!-- Botões de Ação -->
         <div class="flex items-center justify-end gap-3 pt-2 pb-6">
-          <button type="button" class="px-6 py-2.5 rounded-xl text-sm font-semibold border border-gray-300 text-gray-700 hover:bg-gray-100 transition-all">
+          <button type="button" id="btn-cancelar" class="px-6 py-2.5 rounded-xl text-sm font-semibold border border-gray-300 text-gray-700 hover:bg-gray-100 transition-all">
             Cancelar
           </button>
           <button type="submit" class="px-7 py-2.5 rounded-xl text-sm font-semibold bg-[#875C46] text-white hover:bg-[#6D4936] transition-all shadow-sm active:scale-[0.98]">
@@ -301,5 +258,80 @@
     </main>
   </div>
 
+  <!-- SCRIPT DE INTERATIVIDADE -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('form-cadastro');
+      const inputFoto = document.getElementById('input-foto');
+      const photoPreview = document.getElementById('photo-preview');
+      const uploadPlaceholder = document.getElementById('upload-placeholder');
+      const btnCancelar = document.getElementById('btn-cancelar');
+      const btnNovoItem = document.getElementById('btn-novo-item');
+      const radioNivel = document.querySelectorAll('input[name="nivel_acesso"]');
+      const cardAdmin = document.getElementById('card-admin');
+      const cardFunc = document.getElementById('card-func');
+
+      // 1. Upload e Preview da Foto
+      inputFoto.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = (event) => {
+            photoPreview.src = event.target.result;
+            photoPreview.classList.remove('hidden');
+            uploadPlaceholder.classList.add('hidden');
+          };
+          reader.readAsDataURL(file);
+        }
+      });
+
+      // 2. Alternância de Estilo dos Cards de Nível de Acesso
+      radioNivel.forEach((radio) => {
+        radio.addEventListener('change', (e) => {
+          if (e.target.value === 'administrador') {
+            cardAdmin.className = 'relative flex items-start p-4 rounded-xl border-2 border-[#875C46] bg-[#FDFBF7] cursor-pointer transition-all';
+            cardFunc.className = 'relative flex items-start p-4 rounded-xl border border-gray-200 bg-white hover:border-[#875C46]/50 cursor-pointer transition-all';
+          } else {
+            cardFunc.className = 'relative flex items-start p-4 rounded-xl border-2 border-[#875C46] bg-[#FDFBF7] cursor-pointer transition-all';
+            cardAdmin.className = 'relative flex items-start p-4 rounded-xl border border-gray-200 bg-white hover:border-[#875C46]/50 cursor-pointer transition-all';
+          }
+        });
+      });
+
+      // 3. Validação e Envio do Formulário
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const senha = document.getElementById('input-senha').value;
+        const confirmaSenha = document.getElementById('input-confirma-senha').value;
+
+        if (senha !== confirmaSenha) {
+          alert('As senhas digitadas não coincidem. Verifique e tente novamente.');
+          return;
+        }
+
+        const nome = document.getElementById('input-nome').value;
+        alert(`Funcionário ${nome} cadastrado com sucesso!`);
+        
+        // Limpar o formulário após cadastro bem-sucedido
+        btnCancelar.click();
+      });
+
+      // 4. Botão Cancelar / Limpar Formulário
+      btnCancelar.addEventListener('click', () => {
+        form.reset();
+        photoPreview.src = '';
+        photoPreview.classList.add('hidden');
+        uploadPlaceholder.classList.remove('hidden');
+        cardAdmin.className = 'relative flex items-start p-4 rounded-xl border-2 border-[#875C46] bg-[#FDFBF7] cursor-pointer transition-all';
+        cardFunc.className = 'relative flex items-start p-4 rounded-xl border border-gray-200 bg-white hover:border-[#875C46]/50 cursor-pointer transition-all';
+      });
+
+      // 5. Botão "Novo Item" da Sidebar
+      btnNovoItem.addEventListener('click', () => {
+        alert('Ação rápida: Redirecionando para a criação de um novo produto no estoque.');
+        window.location.href = 'materia_prima.html';
+      });
+    });
+  </script>
 </body>
 </html>
