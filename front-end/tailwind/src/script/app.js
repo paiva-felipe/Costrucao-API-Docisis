@@ -1,11 +1,10 @@
-import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 
-import SplashScreen from './screens/SplashScreen';
-import RelatoriosScreen from './screens/RelatoriosScreen';
-import Sidebar from './components/Sidebar';
+import SplashScreen from '../../splashScreen';
+import RelatoriosScreen from '../../relatoriosScreen';
+import Sidebar from '../componentes/sidebar';
 
 const Stack = createStackNavigator();
 const Drawer = createDrawerNavigator();
