@@ -1,4 +1,5 @@
 const FuncionarioRepository = require('../repositories/FuncionariosRepository')
+const bcrypt = require('bcryptjs') // JWT: usado só pra transformar a senha em hash antes de salvar
 
 class FuncionarioService {
     async listarFuncionario() {
@@ -26,10 +27,11 @@ class FuncionarioService {
     }
 
     async cadastrarFuncionario(dados) {
-        const {cpf, id_cargos, nome, email} = dados
+        // JWT: "senha" entra na desestruturação e na validação
+        const {cpf, id_cargos, nome, email, senha} = dados
 
-        if(!cpf || !id_cargos || !nome || !email) {
-            throw { status: 400, mensagem: "CPF, id cargos, nome e email são obrigatórios" }
+        if(!cpf || !id_cargos || !nome || !email || !senha) {
+            throw { status: 400, mensagem: "CPF, id cargos, nome, email e senha são obrigatórios" } // JWT: senha adicionada na mensagem
         }
 
         if(typeof cpf != "string" || cpf.trim() == "") {
@@ -39,11 +41,21 @@ class FuncionarioService {
             throw { status: 400, mensagem: "id cargos deve ser um número positivo" }
         }
 
+        // JWT: validação simples de tamanho mínimo, antes de gastar tempo fazendo o hash
+        if(typeof senha != "string" || senha.trim().length < 6) {
+            throw { status: 400, mensagem: "Senha deve ter no mínimo 6 caracteres" }
+        }
+
+        // JWT: nunca guarda a senha como o funcionário digitou - só o hash dela.
+        // O "10" é o "custo" do hash (quanto maior, mais lento e mais seguro; 10 é o padrão de mercado)
+        const senhaHash = await bcrypt.hash(senha, 10)
+
         const novoFuncionario = {
             cpf,
             id_cargos,
             nome: nome.trim(),
-            email: email.trim()
+            email: email.trim(),
+            senha: senhaHash // JWT: salva o hash, não a senha crua
         }
 
         const resultado = await FuncionarioRepository.cadastrarFuncionario(novoFuncionario)
@@ -63,7 +75,7 @@ class FuncionarioService {
         }
 
         const funcionarioAtualizado = {}
-        const {cpf, id_cargos, nome, email} = dados
+        const {cpf, id_cargos, nome, email, senha} = dados // JWT: senha adicionada aqui também
 
         if(cpf != undefined) {
             if(typeof cpf != "number" || cpf <= 0) {
@@ -82,6 +94,14 @@ class FuncionarioService {
         if(nome !== undefined && nome.trim() != "") funcionarioAtualizado.nome = nome.trim()
 
         if(email !== undefined && email.trim() != "") funcionarioAtualizado.email = email.trim()
+
+        // JWT: troca de senha é opcional na atualização - só mexe se vier alguma coisa no campo
+        if(senha !== undefined) {
+            if(typeof senha != "string" || senha.trim().length < 6) {
+                throw { status: 400, mensagem: "Senha deve ter no mínimo 6 caracteres" }
+            }
+            funcionarioAtualizado.senha = await bcrypt.hash(senha, 10)
+        }
 
         if(Object.keys(funcionarioAtualizado).length == 0) {
             throw { status: 400, mensagem: "Nenhum dado válido enviado para a atualização" }

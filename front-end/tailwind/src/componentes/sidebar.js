@@ -6,7 +6,7 @@ async function carregarSidebar() {
   const paginaAtiva = container.getAttribute('data-active');
 
   try {
-    const resposta = await fetch('componentes/sidebar.html?v=' + new Date().getTime());
+    const resposta = await fetch('src/componentes/sidebar.html?v=' + new Date().getTime());
     if (!resposta.ok) throw new Error(`Erro: ${resposta.statusText}`);
 
     const htmlSidebar = await resposta.text();
