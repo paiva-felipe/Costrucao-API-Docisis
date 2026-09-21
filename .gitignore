@@ -1,5 +1,5 @@
 # Dependências (a pasta mais pesada)
-node_modules/
+node_modules
 
 # Configurações do ambiente e chaves
 .env
